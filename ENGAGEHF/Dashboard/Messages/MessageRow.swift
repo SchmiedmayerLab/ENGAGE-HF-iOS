@@ -59,7 +59,7 @@ struct MessageRow: View {
         
         return Image(systemName: imageName)
             .cardSymbolStyle()
-            .accessibilityLabel(message.action.localizedDescription.localizedString() + " Symbol")
+            .accessibilityLabel("\(message.action.localizedDescription.localizedString()) Symbol")
     }
     
     private var processingStateView: some View {

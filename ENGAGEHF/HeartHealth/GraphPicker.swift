@@ -16,7 +16,7 @@ struct GraphPicker: View {
     var body: some View {
         Picker("Graph Selection", selection: $selection) {
             ForEach(GraphSelection.allCases) { selection in
-                Text(String(describing: selection))
+                Text(selection.description)
                     .multilineTextAlignment(.center)
             }
         }

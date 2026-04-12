@@ -27,25 +27,25 @@ enum SymptomsType: String, CaseIterable, Identifiable, CustomStringConvertible, 
     /// The name displayed in the Picker UI element for selecting the symptom type to be shown
     var description: String {
         switch self {
-        case .overall: "Overall"
-        case .physical: "Physical"
-        case .social: "Social"
-        case .quality: "Quality of Life"
-        case .specific: "Symptoms"
-        case .dizziness: "Dizziness"
+        case .overall: String(localized: "Overall", comment: "Symptom type picker label")
+        case .physical: String(localized: "Physical", comment: "Symptom type picker label")
+        case .social: String(localized: "Social", comment: "Symptom type picker label")
+        case .quality: String(localized: "Quality of Life", comment: "Symptom type picker label")
+        case .specific: String(localized: "Specific Symptoms", comment: "Symptom type picker label")
+        case .dizziness: String(localized: "Dizziness", comment: "Symptom type picker label")
         }
     }
-    
-    
+
+
     /// The full name of the score, displayed in the Description Header
     var fullName: String {
         switch self {
-        case .overall: "Overall Score"
-        case .physical: "Physical Limits Score"
-        case .social: "Social Limits Score"
-        case .quality: "Quality of Life Score"
-        case .specific: "Symptom Frequency Score"
-        case .dizziness: "Dizziness Score"
+        case .overall: String(localized: "Overall Score", comment: "Symptom score full name")
+        case .physical: String(localized: "Physical Limits Score", comment: "Symptom score full name")
+        case .social: String(localized: "Social Limits Score", comment: "Symptom score full name")
+        case .quality: String(localized: "Quality of Life Score", comment: "Symptom score full name")
+        case .specific: String(localized: "Symptom Frequency Score", comment: "Symptom score full name")
+        case .dizziness: String(localized: "Dizziness Score", comment: "Symptom score full name")
         }
     }
     

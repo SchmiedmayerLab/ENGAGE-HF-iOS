@@ -43,11 +43,13 @@ struct MessagesSection: View {
     
     
     private func constructAccessibilityLabel(from message: Message) -> String {
-        """
-        Message: \(message.title), \
-        description: \(message.description ?? "none"), \
-        action: \(message.action.localizedDescription.localizedString()).
-        """
+        let title = message.title
+        let description = message.description ?? String(localized: "none", comment: "Accessibility placeholder for missing message description")
+        let action = message.action.localizedDescription.localizedString()
+        return String(
+            localized: "Message: \(title), description: \(description), action: \(action).",
+            comment: "Accessibility label for a message card"
+        )
     }
 }
 
