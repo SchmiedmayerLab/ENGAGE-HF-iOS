@@ -35,7 +35,7 @@ There are 6 main features of the app: a Home page with a dashboard that displays
 |Education|Symptom Survey|Bluetooth|
 
 
-The home page demonstrates that the application is server-driven, as the application displays messages that are generated on the backend. For ENGAGE-HF, this is a [Firebase](https://firebase.google.com/docs) based backend (for more information, see [ENGAGE-HF-Firebase](https://github.com/StanfordBDHG/ENGAGE-HF-Firebase)). To help integrate the backend with our application, we use the standard [Firebase Firestore SDK as defined in the API documentation](https://firebase.google.com/docs/firestore/manage-data/add-data#swift) as well as [SpeziFirebase](https://github.com/StanfordSpezi/SpeziFirebase). Similarly, we manage user account information via [SpeziAccount](https://github.com/StanfordSpezi/SpeziAccount).
+The home page demonstrates that the application is server-driven, as the application displays messages that are generated on the backend. For ENGAGE-HF, this is a [Firebase](https://firebase.google.com/docs) based backend (for more information, see [ENGAGE-HF-Firebase](https://github.com/SchmiedmayerLab/ENGAGE-HF-Firebase)). To help integrate the backend with our application, we use the standard [Firebase Firestore SDK as defined in the API documentation](https://firebase.google.com/docs/firestore/manage-data/add-data#swift) as well as [SpeziFirebase](https://github.com/StanfordSpezi/SpeziFirebase). Similarly, we manage user account information via [SpeziAccount](https://github.com/StanfordSpezi/SpeziAccount).
 
 The Symptom Survey demonstrates how we can collect survery results from the user from pre-defined surveys. ENGAGE-HF presents the survey using [SpeziQuestionnaire](https://github.com/StanfordSpezi/SpeziQuestionnaire). The survey is stored in Firestore as an [HL-7 FHIR Questionnaire Resource](https://build.fhir.org/questionnaire-definitions.html).
 
@@ -47,7 +47,7 @@ ENGAGE-HF includes sophisticated bluetooth connectivity. Once paired, the app pa
 The ENGAGE-HF app uses a Google Firebase-based backend.
 You will need to clone this repo with submodules enabled to automatically clone the relevant Firebase setup in the *ENGAGE-HF-Firebase* folder, e.g.,:
 ```bash
-git clone --recurse-submodules git@github.com:StanfordBDHG/ENGAGE-HF-iOS.git
+git clone --recurse-submodules git@github.com:SchmiedmayerLab/ENGAGE-HF-iOS.git
 ```
 
 To boot up the Firebase backend, you can either install the Firebase emulator or use a docker-based setup. You can learn how to [install the Firebase Local Emulator Suite to run a version of the service infrastructure locally on the firebase support page](https://firebase.google.com/docs/emulator-suite/install_and_configure). After this, you can run the following command to start the Firebase emulator, including a seeded version of the infrastructure.
@@ -61,7 +61,7 @@ or
 cd ENGAGE-HF-Firebase && docker-compose up
 ```
 
-Please refer to the [ENGAGE-HF-Firebase](https://github.com/StanfordBDHG/ENGAGE-HF-Firebase) repository for more details about the Firebase setup.
+Please refer to the [ENGAGE-HF-Firebase](https://github.com/SchmiedmayerLab/ENGAGE-HF-Firebase) repository for more details about the Firebase setup.
 
 You can then visit http://127.0.0.1:4000/firestore/ to see all the seeded data that can be used in the application. The ENGAGE-HF app automatically connects to the local emulator when running in the iOS simulator using Xcode.
 
