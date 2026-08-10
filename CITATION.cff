@@ -1,5 +1,5 @@
 #
-# This source file is part of the ENGAGE-HF based on the Stanford Spezi Template Application project
+# This source file is part of the ENGAGE-HF iOS open-source project
 #
 # SPDX-FileCopyrightText: 2023 Stanford University
 #
@@ -8,14 +8,23 @@
 
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
+type: software
 authors:
 - family-names: "Schmiedmayer"
   given-names: "Paul"
   orcid: "https://orcid.org/0000-0002-8607-9148"
-- family-names: "Ravi"
-  given-names: "Vishnu"
-  orcid: "https://orcid.org/0000-0003-0359-1275"
-- family-names: "Aalami"
-  given-names: "Oliver"
-  orcid: "https://orcid.org/0000-0002-7799-2429"
+- family-names: "Riedman"
+  given-names: "Nick"
+- family-names: "Kraft"
+  given-names: "Paul Johannes"
+  orcid: "https://orcid.org/0000-0001-8157-8151"
+- family-names: "Bauer"
+  given-names: "Andreas"
+  orcid: "https://orcid.org/0000-0002-1680-237X"
+- family-names: "Madlener"
+  given-names: "Nikolai"
+  orcid: "https://orcid.org/0009-0006-5059-6617"
 title: "ENGAGE-HF"
+license: MIT
+url: "https://github.com/SchmiedmayerLab/ENGAGE-HF-iOS"
+repository-code: "https://github.com/SchmiedmayerLab/ENGAGE-HF-iOS"

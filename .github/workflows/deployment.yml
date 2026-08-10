@@ -1,5 +1,5 @@
 #
-# This source file is part of the ENGAGE-HF based on the Stanford Spezi Template Application project
+# This source file is part of the ENGAGE-HF iOS open-source project
 #
 # SPDX-FileCopyrightText: 2023 Stanford University
 #
@@ -136,7 +136,7 @@ jobs:
   iosapptestflightdeployment:
     name: iOS App TestFlight Deployment
     needs: [determineenvironment, vars, buildandtest]
-    uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+    uses: SchmiedmayerLab/.github/.github/workflows/xcodebuild-or-fastlane.yml@v0.5
     permissions:
       contents: read
     with:

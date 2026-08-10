@@ -1,16 +1,20 @@
 <!--
 
-This source file is part of the ENGAGE-HF based on the Stanford Spezi Template Application project
+This source file is part of the ENGAGE-HF iOS open-source project
 
-SPDX-FileCopyrightText: 2023 Stanford University
+SPDX-FileCopyrightText: 2023 Stanford University and the project authors (see CONTRIBUTORS.md)
 
 SPDX-License-Identifier: MIT
 
 -->
 
 # ENGAGE-HF
-[![Build and Test](https://github.com/StanfordBDHG/ENGAGE-HF-iOS/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/StanfordBDHG/ENGAGE-HF-iOS/actions/workflows/build-and-test.yml)
-[![codecov](https://codecov.io/gh/StanfordBDHG/ENGAGE-HF-iOS/graph/badge.svg?token=sFNNo3AoNd)](https://codecov.io/gh/StanfordBDHG/ENGAGE-HF-iOS)
+
+[![Build and Test](https://github.com/SchmiedmayerLab/ENGAGE-HF-iOS/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/SchmiedmayerLab/ENGAGE-HF-iOS/actions/workflows/build-and-test.yml)
+[![Deployment](https://github.com/SchmiedmayerLab/ENGAGE-HF-iOS/actions/workflows/deployment.yml/badge.svg)](https://github.com/SchmiedmayerLab/ENGAGE-HF-iOS/actions/workflows/deployment.yml)
+[![Codecov](https://codecov.io/gh/SchmiedmayerLab/ENGAGE-HF-iOS/graph/badge.svg?token=sFNNo3AoNd)](https://codecov.io/gh/SchmiedmayerLab/ENGAGE-HF-iOS)
+[![REUSE status](https://api.reuse.software/badge/github.com/SchmiedmayerLab/ENGAGE-HF-iOS)](https://api.reuse.software/info/github.com/SchmiedmayerLab/ENGAGE-HF-iOS)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/SchmiedmayerLab/ENGAGE-HF-iOS/blob/main/LICENSE.md)
 
 This repository contains the ENGAGE-HF iOS application. ENGAGE-HF builds on top of the [Stanford Spezi Template Application](https://github.com/StanfordSpezi/SpeziTemplateApplication) using the [Spezi](https://github.com/StanfordSpezi/Spezi) ecosystem, and is primarily written using the [Swift](https://www.swift.org) programming language in conjunction with [SwiftUI](https://developer.apple.com/documentation/swiftui/). The application is developed as part of the DOT-HF study. It records measurements taken on Bluetooth Low Energy peripherals (a weight scale and a blood pressure cuff), saves them to [Firestore](https://firebase.google.com/docs/firestore), and generates medication recommendations based on recent vitals trends and KCCQ-12 survey responses. ENGAGE-HF also allows patients to interact with and manage their measurement history via a Heart Health page built with [Swift Charts](https://developer.apple.com/documentation/charts).
 
@@ -63,22 +67,21 @@ You can then visit http://127.0.0.1:4000/firestore/ to see all the seeded data t
 
 You can build and run the application using [Xcode](https://developer.apple.com/xcode/) by opening up the **ENGAGE-HF.xcodeproj**.
 
-
-
 ## Contributing
 
-Contributions to this project are welcome. Please make sure to read the [contribution guidelines](https://github.com/StanfordBDHG/.github/blob/main/CONTRIBUTING.md) and the [contributor covenant code of conduct](https://github.com/StanfordBDHG/.github/blob/main/CODE_OF_CONDUCT.md) first.
-
-You can find a list of contributors in the [Contributors](https://github.com/StanfordBDHG/ENGAGE-HF-iOS/blob/main/CONTRIBUTORS.md) file.
+Contributions to this project are welcome. Please make sure to read the [contribution guidelines](https://github.com/SchmiedmayerLab/.github/blob/main/CONTRIBUTING.md) and the [contributor covenant code of conduct](https://github.com/SchmiedmayerLab/.github/blob/main/CODE_OF_CONDUCT.md) first. You can find a list of contributors in the [CONTRIBUTORS.md](CONTRIBUTORS.md) file.
 
 ## License
 
-This project is licensed under the MIT License. See [Licenses](https://github.com/StanfordBDHG/PediatricAppleWatchStudy/tree/main/LICENSES) for more information.
+This project is licensed under the MIT License. See [LICENSE.md](LICENSE.md) for more information.
 
+## Citation
+
+If you use this software, please cite it using the metadata in [CITATION.cff](CITATION.cff), which GitHub surfaces through the [*Cite this repository*](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files) button.
 
 ## Our Research
 
-For more information, check out our website at [biodesigndigitalhealth.stanford.edu](https://biodesigndigitalhealth.stanford.edu).
+For more information, visit the [Schmiedmayer Lab GitHub organization](https://github.com/SchmiedmayerLab).
 
-![Stanford Byers Center for Biodesign Logo](https://raw.githubusercontent.com/StanfordBDHG/.github/main/assets/biodesign-footer-light.png#gh-light-mode-only)
-![Stanford Byers Center for Biodesign Logo](https://raw.githubusercontent.com/StanfordBDHG/.github/main/assets/biodesign-footer-dark.png#gh-dark-mode-only)
+![Schmiedmayer Lab](https://raw.githubusercontent.com/SchmiedmayerLab/.github/main/assets/footer-light.png#gh-light-mode-only)
+![Schmiedmayer Lab](https://raw.githubusercontent.com/SchmiedmayerLab/.github/main/assets/footer-dark.png#gh-dark-mode-only)
