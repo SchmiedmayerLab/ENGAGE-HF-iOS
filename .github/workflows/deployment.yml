@@ -82,10 +82,10 @@ jobs:
         id: determineenvironment
         run: |
           if [[ -z "${{ inputs.environment }}" ]]; then
-            echo "environment=staging" >> $GITHUB_OUTPUT
+            echo "environment=staging" >> "$GITHUB_OUTPUT"
             echo "environment: staging"
           else
-            echo "environment=${{ inputs.environment }}" >> $GITHUB_OUTPUT
+            echo "environment=${{ inputs.environment }}" >> "$GITHUB_OUTPUT"
             echo "environment: ${{ inputs.environment }}"
           fi
   vars:
@@ -119,10 +119,10 @@ jobs:
             PATCH=$((PATCH + 1))
             NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
 
-            echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+            echo "version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
             echo "version: $NEW_VERSION"
           else
-            echo "version=${{ inputs.version }}" >> $GITHUB_OUTPUT
+            echo "version=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
             echo "version: ${{ inputs.version }}"
           fi
           echo "releasenotes: ${{ inputs.releasenotes }}"
