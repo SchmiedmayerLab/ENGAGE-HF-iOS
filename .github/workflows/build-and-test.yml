@@ -40,6 +40,7 @@ jobs:
     uses: SchmiedmayerLab/.github/.github/workflows/coverage.yml@v0.5
     permissions:
       contents: read
+      actions: read
     with:
       coveragereports: ENGAGEHF.xcresult
     secrets:

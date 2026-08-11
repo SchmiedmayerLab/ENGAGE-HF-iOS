@@ -40,6 +40,7 @@ jobs:
     uses: SchmiedmayerLab/.github/.github/workflows/markdown-links.yml@v0.5
     permissions:
       contents: read
+      pull-requests: read
   codeql:
     name: CodeQL
     uses: SchmiedmayerLab/.github/.github/workflows/xcodebuild-or-fastlane.yml@v0.5

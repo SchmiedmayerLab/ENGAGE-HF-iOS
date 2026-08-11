@@ -19,3 +19,4 @@ jobs:
     uses: SchmiedmayerLab/.github/.github/workflows/markdown-links.yml@v0.5
     permissions:
       contents: read
+      pull-requests: read
