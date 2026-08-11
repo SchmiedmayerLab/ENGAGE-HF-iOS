@@ -14,7 +14,7 @@ SPDX-License-Identifier: MIT
 [![Deployment](https://github.com/SchmiedmayerLab/ENGAGE-HF-iOS/actions/workflows/deployment.yml/badge.svg)](https://github.com/SchmiedmayerLab/ENGAGE-HF-iOS/actions/workflows/deployment.yml)
 [![Codecov](https://codecov.io/gh/SchmiedmayerLab/ENGAGE-HF-iOS/graph/badge.svg?token=sFNNo3AoNd)](https://codecov.io/gh/SchmiedmayerLab/ENGAGE-HF-iOS)
 [![REUSE status](https://api.reuse.software/badge/github.com/SchmiedmayerLab/ENGAGE-HF-iOS)](https://api.reuse.software/info/github.com/SchmiedmayerLab/ENGAGE-HF-iOS)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/SchmiedmayerLab/ENGAGE-HF-iOS/blob/main/LICENSE.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.md)
 
 This repository contains the ENGAGE-HF iOS application. ENGAGE-HF builds on top of the [Stanford Spezi Template Application](https://github.com/StanfordSpezi/SpeziTemplateApplication) using the [Spezi](https://github.com/StanfordSpezi/Spezi) ecosystem, and is primarily written using the [Swift](https://www.swift.org) programming language in conjunction with [SwiftUI](https://developer.apple.com/documentation/swiftui/). The application is developed as part of the DOT-HF study. It records measurements taken on Bluetooth Low Energy peripherals (a weight scale and a blood pressure cuff), saves them to [Firestore](https://firebase.google.com/docs/firestore), and generates medication recommendations based on recent vitals trends and KCCQ-12 survey responses. ENGAGE-HF also allows patients to interact with and manage their measurement history via a Heart Health page built with [Swift Charts](https://developer.apple.com/documentation/charts).
 
