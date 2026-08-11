@@ -11,7 +11,6 @@ import SwiftUI
 
 
 struct VideoPlayer: View {
-    // swiftlint:disable:next force_unwrapping
     private static let youtubeEmbedUrl = URL(string: "https://youtube.com/embed")!
     
     let youtubeId: String
