@@ -86,7 +86,7 @@ actor ENGAGEHFStandard: Standard, EnvironmentAccessible, PhoneVerificationConstr
     }
     
     
-    func add(response: ModelsR4.QuestionnaireResponse) async throws {
+    nonisolated(nonsending) func add(response: ModelsR4.QuestionnaireResponse) async throws {
         var questionnaireId = response.identifier?.value?.value?.string ?? UUID().uuidString
 
         // Use ID "0" in test mode to match test message
@@ -96,7 +96,7 @@ actor ENGAGEHFStandard: Standard, EnvironmentAccessible, PhoneVerificationConstr
         }
 #endif
         
-        messageManager.markAsProcessing(
+        await messageManager.markAsProcessing(
             type: .questionnaire(id: questionnaireId)
         )
         

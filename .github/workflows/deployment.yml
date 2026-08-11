@@ -1,5 +1,5 @@
 #
-# This source file is part of the ENGAGE-HF based on the Stanford Spezi Template Application project
+# This source file is part of the ENGAGE-HF iOS open-source project
 #
 # SPDX-FileCopyrightText: 2023 Stanford University
 #
@@ -82,10 +82,10 @@ jobs:
         id: determineenvironment
         run: |
           if [[ -z "${{ inputs.environment }}" ]]; then
-            echo "environment=staging" >> $GITHUB_OUTPUT
+            echo "environment=staging" >> "$GITHUB_OUTPUT"
             echo "environment: staging"
           else
-            echo "environment=${{ inputs.environment }}" >> $GITHUB_OUTPUT
+            echo "environment=${{ inputs.environment }}" >> "$GITHUB_OUTPUT"
             echo "environment: ${{ inputs.environment }}"
           fi
   vars:
@@ -119,10 +119,10 @@ jobs:
             PATCH=$((PATCH + 1))
             NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
 
-            echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+            echo "version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
             echo "version: $NEW_VERSION"
           else
-            echo "version=${{ inputs.version }}" >> $GITHUB_OUTPUT
+            echo "version=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
             echo "version: ${{ inputs.version }}"
           fi
           echo "releasenotes: ${{ inputs.releasenotes }}"
@@ -132,11 +132,12 @@ jobs:
     uses: ./.github/workflows/build-and-test.yml
     permissions:
       contents: read
+      actions: read
     secrets: inherit
   iosapptestflightdeployment:
     name: iOS App TestFlight Deployment
     needs: [determineenvironment, vars, buildandtest]
-    uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+    uses: SchmiedmayerLab/.github/.github/workflows/xcodebuild-or-fastlane.yml@v0.5
     permissions:
       contents: read
     with:
