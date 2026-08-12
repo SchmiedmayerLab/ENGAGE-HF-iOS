@@ -38,21 +38,23 @@ final class HealthSummaryUITests: XCTestCase {
         
         app.goTo(tab: "Home")
         
-        XCTAssertTrue(app.navigationBars.buttons["Your Account"].waitForExistence(timeout: 2))
+        app.navigationBars.buttons["Your Account"].assertExists()
         app.navigationBars.buttons["Your Account"].tap()
-        
-        XCTAssert(app.buttons["Health Summary"].waitForExistence(timeout: 0.5))
+
+        app.buttons["Health Summary"].assertExists()
         app.buttons["Health Summary"].tap()
-        
-        XCTAssertTrue(app.segmentedControls.buttons["PDF"].exists)
-        XCTAssertTrue(app.segmentedControls.buttons["QR Code"].exists)
-        
-        XCTAssertTrue(app.navigationBars.buttons["Share Link"].waitForExistence(timeout: 5))
-        
+
+        app.segmentedControls.buttons["PDF"].assertExists()
+        app.segmentedControls.buttons["QR Code"].assertExists()
+
+        // The share link only appears once the summary has been exported, which is a round trip rather
+        // than a render.
+        app.navigationBars.buttons["Share Link"].assertExists()
+
         app.segmentedControls.buttons["QR Code"].tap()
-        
-        XCTAssertTrue(app.navigationBars.buttons["Share Link"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["Health Summary QR Code"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["One-time Code"].waitForExistence(timeout: 2))
+
+        app.navigationBars.buttons["Share Link"].assertExists()
+        app.staticTexts["Health Summary QR Code"].assertExists()
+        app.staticTexts["One-time Code"].assertExists()
     }
 }

@@ -137,9 +137,9 @@ extension XCUIApplication {
     }
     
     private func navigateInvitationCode(code: String) throws {
-        XCTAssert(staticTexts["Invitation Code"].waitForExistence(timeout: 5))
-        
-        XCTAssert(textFields["Invitation Code"].exists)
+        staticTexts["Invitation Code"].assertExists()
+
+        textFields["Invitation Code"].assertExists()
         textFields["Invitation Code"].tap()
         textFields["Invitation Code"].typeText(code)
         

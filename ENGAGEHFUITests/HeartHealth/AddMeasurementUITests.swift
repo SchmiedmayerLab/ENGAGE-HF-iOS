@@ -98,11 +98,12 @@ extension XCUIApplication {
     ) throws {
         goToHeartHealth(segment: id.short, header: id.full)
         
-        staticTexts["About \(id.full)"].swipeUp()
-        buttons["Add Measurement: \(id.short)"].tap()
-        
-        XCTAssert(staticTexts[id.full].waitForExistence(timeout: 0.5))
-        XCTAssert(buttons["Cancel"].exists)
+        let addMeasurement = buttons["Add Measurement: \(id.short)"]
+        scrollToElement(addMeasurement)
+        addMeasurement.tap()
+
+        staticTexts[id.full].assertExists()
+        buttons["Cancel"].assertExists()
         
         let addButton = buttons["Add"]
         XCTAssert(addButton.exists && !addButton.isEnabled)
@@ -124,12 +125,9 @@ extension XCUIApplication {
         XCTAssert(addButton.isEnabled)
         addButton.tap()
         
-        swipeUp()
-        swipeUp()
-        
         let currentDate = Date().formatted(date: .abbreviated, time: .omitted)
-        XCTAssert(staticTexts["\(id.short) Date: \(currentDate)"].firstMatch.waitForExistence(timeout: 10))
-        XCTAssert(staticTexts["\(id.short) Unit: \(expectedQuantity.unit)"].firstMatch.waitForExistence(timeout: 10))
-        XCTAssert(staticTexts["\(id.short) Quantity: \(expectedQuantity.value)"].firstMatch.waitForExistence(timeout: 10))
+        scrollToElement(staticTexts["\(id.short) Date: \(currentDate)"].firstMatch)
+        staticTexts["\(id.short) Unit: \(expectedQuantity.unit)"].firstMatch.assertExists()
+        staticTexts["\(id.short) Quantity: \(expectedQuantity.value)"].firstMatch.assertExists()
     }
 }
