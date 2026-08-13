@@ -25,38 +25,15 @@ env:
 jobs:
   unittests:
     name: Unit Tests
-    runs-on: [macOS, self-hosted]
+    uses: SchmiedmayerLab/.github/.github/workflows/xcodebuild.yml@v0.5
     permissions:
       contents: read
-    steps:
-      - uses: actions/checkout@v7
-        with:
-          persist-credentials: false
-          submodules: recursive
-      - name: Run the unit tests
-        env:
-          RESULT_BUNDLE_PATH: ${{ runner.temp }}/ENGAGEHF-UnitTests.xcresult
-        run: |
-          set -o pipefail
-          xcodebuild test \
-            -scheme ENGAGEHF \
-            -configuration Debug \
-            -destination "$UI_TEST_DESTINATION" \
-            -resultBundlePath "$RESULT_BUNDLE_PATH" \
-            -enableCodeCoverage YES \
-            -skipPackagePluginValidation \
-            -skipMacroValidation \
-            -only-testing:ENGAGEHFTests \
-          | xcbeautify
-      - name: Upload test result
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: ENGAGEHF-UnitTests.xcresult
-          path: ${{ runner.temp }}/ENGAGEHF-UnitTests.xcresult
-          if-no-files-found: warn
-          overwrite: true
-          retention-days: 7
+    with:
+      runsonlabels: '["macOS", "self-hosted"]'
+      scheme: ENGAGEHF
+      testplan: ENGAGEHF Unit Tests
+      resultBundle: ENGAGEHF-UnitTests.xcresult
+      artifactname: ENGAGEHF-UnitTests.xcresult
 
   uitestbuild:
     name: UI Tests (Build)
@@ -92,6 +69,7 @@ jobs:
             -scheme ENGAGEHF \
             -configuration Debug \
             -destination "$UI_TEST_DESTINATION" \
+            -testPlan 'ENGAGEHF UI Tests' \
             -enableCodeCoverage YES \
             -testProductsPath "$UI_TEST_PRODUCTS_PATH" \
             -skipPackagePluginValidation \
