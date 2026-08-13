@@ -37,6 +37,8 @@ struct MedicationRecommendationSymbol: View {
                     comment: "Accessibility label for medication recommendation symbol"
                 )
             )
+            // The label reads as prose and changes with the language, so the tests match on this instead.
+            .accessibilityIdentifier("Medication Label: \(type.rawValue)")
     }
 }
 

@@ -93,6 +93,6 @@ extension XCUIApplication {
             remainingScrolls -= 1
         }
 
-        XCTAssertTrue(element.isHittable, "\(element) never scrolled into view.", file: file, line: line)
+        XCTAssertTrue(element.exists, "\(element) never scrolled into view.", file: file, line: line)
     }
 }

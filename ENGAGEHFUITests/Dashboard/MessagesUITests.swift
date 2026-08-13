@@ -270,7 +270,7 @@ final class MessagesUITests: XCTestCase {
     ) throws {
         let expectedCardLabel = """
         Message: \(expectedTitle), \
-        description: \(expectedDescription ?? "none"), \
+        description: \(expectedDescription ?? "No description"), \
         action: \(expectedAction).
         """
         XCTAssertEqual(expectedCardLabel, card.label)
