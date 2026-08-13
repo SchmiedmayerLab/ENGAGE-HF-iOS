@@ -13,29 +13,29 @@ extension XCUIApplication {
     /// Tries to navigate to a tab by clicking on a button in the current view with label "id", and verifies the correct arrival by looking for a header with label "header" or "id" if no header given.
     func goTo(tab tabName: String, header: String? = nil) {
         func navigateToTab() {
-            XCTAssert(buttons[tabName].waitForExistence(timeout: 6.0), "No button found for tab \(tabName)")
+            buttons[tabName].assertExists("No button found for tab \(tabName)")
             buttons[tabName].tap()
             swipeDown()
         }
         
         navigateToTab()
         
-        guard !staticTexts[header ?? tabName].waitForExistence(timeout: 1.0) else {
+        guard !staticTexts[header ?? tabName].waitForExistence(timeout: 2.0) else {
             return
         }
         
         navigateToTab()
         
-        XCTAssert(staticTexts[header ?? tabName].waitForExistence(timeout: 1.0))
+        staticTexts[header ?? tabName].assertExists()
     }
     
     func goToHeartHealth(segment: String, header: String) {
         goTo(tab: "Heart Health")
         
-        XCTAssert(buttons[segment].waitForExistence(timeout: 6.0), "No button found for segment \(segment)")
+        buttons[segment].assertExists("No button found for segment \(segment)")
         buttons[segment].tap()
         
         staticTexts["About \(header)"].swipeDown()
-        XCTAssert(staticTexts[header].waitForExistence(timeout: 1.0))
+        staticTexts[header].assertExists()
     }
 }
