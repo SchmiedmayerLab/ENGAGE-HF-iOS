@@ -93,6 +93,13 @@ extension XCUIApplication {
             remainingScrolls -= 1
         }
 
-        XCTAssertTrue(element.exists, "\(element) never scrolled into view.", file: file, line: line)
+        // Scrolling only brings the row into range; the data behind it may still be on its way, so this
+        // waits the full timeout rather than judging the element the instant the last swipe lands.
+        XCTAssertTrue(
+            element.waitForExistence(timeout: .uiTestTimeout),
+            "\(element) never scrolled into view.",
+            file: file,
+            line: line
+        )
     }
 }

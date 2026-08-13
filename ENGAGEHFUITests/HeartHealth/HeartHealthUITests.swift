@@ -312,11 +312,11 @@ extension XCUIApplication {
     }
     
     private func testEmptyForSpecificType(scoreType: String) {
-        XCTAssert(staticTexts["Overall Summary Quantity: No Data"].waitForExistence(timeout: 0.5))
-        XCTAssert(staticTexts["\(scoreType) Score Description"].waitForExistence(timeout: 0.5))
-        XCTAssert(staticTexts["About \(scoreType) Score"].waitForExistence(timeout: 0.5))
+        staticTexts["Overall Summary Quantity: No Data"].assertExists()
+        staticTexts["\(scoreType) Score Description"].assertExists()
+        staticTexts["About \(scoreType) Score"].assertExists()
         staticTexts["About \(scoreType) Score"].swipeUp()
-        XCTAssert(staticTexts["Empty Symptoms List"].waitForExistence(timeout: 0.5))
+        staticTexts["Empty Symptoms List"].assertExists()
         swipeDown()
     }
 }

@@ -17,31 +17,215 @@ concurrency:
   group: Build-and-Test-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  UI_TEST_DESTINATION: 'platform=iOS Simulator,name=iPhone 17 Pro'
+  UI_TEST_PRODUCTS_PATH: .ci-cache/ENGAGEHF-UITests.xctestproducts
+  FIREBASE_EXPORT_PATH: .ci-cache/firebase-export
+
 jobs:
-  buildandtest:
-    name: Build and Test
-    uses: SchmiedmayerLab/.github/.github/workflows/xcodebuild-or-fastlane.yml@v0.5
+  unittests:
+    name: Unit Tests
+    runs-on: [macOS, self-hosted]
     permissions:
       contents: read
-    with:
-      artifactname: ENGAGEHF.xcresult
-      runsonlabels: '["macOS", "self-hosted"]'
-      fastlanelane: test
-      firebaseemulatorimport: ./firebase
-      firebasejsonpath: ./ENGAGE-HF-Firebase/firebase.json
-      setupfirebaseemulator: true
-      checkout_submodules: true
-      customcommand: npm --prefix ENGAGE-HF-Firebase run prepare && firebase emulators:exec -c ./ENGAGE-HF-Firebase/firebase.json --export-on-exit=./firebase 'npm --prefix ./ENGAGE-HF-Firebase/functions run serve:seed && sleep 10'
-    secrets:
-      GOOGLE_APPLICATION_CREDENTIALS_BASE64: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64 }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          submodules: recursive
+      - name: Run the unit tests
+        env:
+          RESULT_BUNDLE_PATH: ${{ runner.temp }}/ENGAGEHF-UnitTests.xcresult
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -scheme ENGAGEHF \
+            -configuration Debug \
+            -destination "$UI_TEST_DESTINATION" \
+            -resultBundlePath "$RESULT_BUNDLE_PATH" \
+            -enableCodeCoverage YES \
+            -skipPackagePluginValidation \
+            -skipMacroValidation \
+            -only-testing:ENGAGEHFTests \
+          | xcbeautify
+      - name: Upload test result
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: ENGAGEHF-UnitTests.xcresult
+          path: ${{ runner.temp }}/ENGAGEHF-UnitTests.xcresult
+          if-no-files-found: warn
+          overwrite: true
+          retention-days: 7
+
+  uitestbuild:
+    name: UI Tests (Build)
+    runs-on: [macOS, self-hosted]
+    permissions:
+      contents: read
+    outputs:
+      matrix: ${{ steps.shards.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          submodules: recursive
+      - name: Resolve cache keys
+        id: keys
+        run: |
+          xcode_version="$(xcodebuild -version | awk 'NR == 1 { version = $2 } NR == 2 { build = $3 } END { print version "-" build }')"
+          echo "Using Xcode $xcode_version on $RUNNER_OS/$RUNNER_ARCH"
+          echo "products=engagehf-ui-test-products-v1-$RUNNER_OS-$RUNNER_ARCH-xcode-$xcode_version-$GITHUB_SHA" >> "$GITHUB_OUTPUT"
+          echo "firebase=engagehf-firebase-seed-v1-$GITHUB_SHA" >> "$GITHUB_OUTPUT"
+      - name: Restore test products
+        id: restore-test-products
+        uses: actions/cache/restore@v6
+        with:
+          path: ${{ env.UI_TEST_PRODUCTS_PATH }}
+          key: ${{ steps.keys.outputs.products }}
+      - name: Build for testing
+        if: steps.restore-test-products.outputs.cache-hit != 'true'
+        run: |
+          set -o pipefail
+          mkdir -p "$(dirname "$UI_TEST_PRODUCTS_PATH")"
+          xcodebuild \
+            -scheme ENGAGEHF \
+            -configuration Debug \
+            -destination "$UI_TEST_DESTINATION" \
+            -enableCodeCoverage YES \
+            -testProductsPath "$UI_TEST_PRODUCTS_PATH" \
+            -skipPackagePluginValidation \
+            -skipMacroValidation \
+            build-for-testing \
+          | xcbeautify
+      - name: Validate test products
+        run: |
+          test -f "$UI_TEST_PRODUCTS_PATH/Info.plist"
+          test -d "$UI_TEST_PRODUCTS_PATH/Binaries"
+          plutil -lint "$UI_TEST_PRODUCTS_PATH/Info.plist"
+      - name: Verify every UI test belongs to exactly one shard
+        run: |
+          .github/scripts/validate-ui-test-shards.sh \
+            .github/ui-test-shards.json \
+            "$UI_TEST_PRODUCTS_PATH" \
+            "$UI_TEST_DESTINATION"
+      - name: Resolve UI test shard matrix
+        id: shards
+        run: |
+          matrix="$(jq -c '{include: [.shards[] | {name, shard, tests: (.tests | join("\n"))}]}' .github/ui-test-shards.json)"
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+      - name: Save test products
+        if: steps.restore-test-products.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: ${{ env.UI_TEST_PRODUCTS_PATH }}
+          key: ${{ steps.keys.outputs.products }}
+      - name: Restore seeded Firebase data
+        id: restore-firebase
+        uses: actions/cache/restore@v6
+        with:
+          path: ${{ env.FIREBASE_EXPORT_PATH }}
+          key: ${{ steps.keys.outputs.firebase }}
+      - name: Seed the Firebase emulators
+        if: steps.restore-firebase.outputs.cache-hit != 'true'
+        run: |
+          set -o pipefail
+          npm --prefix ENGAGE-HF-Firebase run prepare
+          mkdir -p "$(dirname "$FIREBASE_EXPORT_PATH")"
+          firebase emulators:exec \
+            -c ./ENGAGE-HF-Firebase/firebase.json \
+            --export-on-exit="$FIREBASE_EXPORT_PATH" \
+            'npm --prefix ./ENGAGE-HF-Firebase/functions run serve:seed && sleep 10'
+      - name: Save seeded Firebase data
+        if: steps.restore-firebase.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: ${{ env.FIREBASE_EXPORT_PATH }}
+          key: ${{ steps.keys.outputs.firebase }}
+
+  uitestrun:
+    name: UI Tests (${{ matrix.name }})
+    needs: uitestbuild
+    runs-on: [macOS, self-hosted]
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix: ${{ fromJSON(needs.uitestbuild.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          submodules: recursive
+      - name: Resolve cache keys
+        id: keys
+        run: |
+          xcode_version="$(xcodebuild -version | awk 'NR == 1 { version = $2 } NR == 2 { build = $3 } END { print version "-" build }')"
+          echo "products=engagehf-ui-test-products-v1-$RUNNER_OS-$RUNNER_ARCH-xcode-$xcode_version-$GITHUB_SHA" >> "$GITHUB_OUTPUT"
+          echo "firebase=engagehf-firebase-seed-v1-$GITHUB_SHA" >> "$GITHUB_OUTPUT"
+      - name: Restore test products
+        uses: actions/cache/restore@v6
+        with:
+          path: ${{ env.UI_TEST_PRODUCTS_PATH }}
+          key: ${{ steps.keys.outputs.products }}
+          fail-on-cache-miss: true
+      - name: Restore seeded Firebase data
+        uses: actions/cache/restore@v6
+        with:
+          path: ${{ env.FIREBASE_EXPORT_PATH }}
+          key: ${{ steps.keys.outputs.firebase }}
+          fail-on-cache-miss: true
+      - name: Validate test products
+        run: |
+          test -f "$UI_TEST_PRODUCTS_PATH/Info.plist"
+          test -d "$UI_TEST_PRODUCTS_PATH/Binaries"
+          plutil -lint "$UI_TEST_PRODUCTS_PATH/Info.plist"
+      - name: Build the Firebase functions
+        run: npm --prefix ENGAGE-HF-Firebase run prepare
+      - name: Run UI test shard
+        env:
+          DESTINATION: ${{ env.UI_TEST_DESTINATION }}
+          ONLY_TESTING: ${{ matrix.tests }}
+          RESULT_BUNDLE_PATH: ${{ runner.temp }}/ENGAGEHF-UITests-${{ matrix.shard }}-${{ github.run_attempt }}.xcresult
+          TEST_PRODUCTS_PATH: ${{ github.workspace }}/${{ env.UI_TEST_PRODUCTS_PATH }}
+        run: |
+          firebase emulators:exec \
+            -c ./ENGAGE-HF-Firebase/firebase.json \
+            --import="$FIREBASE_EXPORT_PATH" \
+            '.github/scripts/run-ui-test-shard.sh'
+      - name: Upload test result
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: ENGAGEHF-UITests-${{ matrix.shard }}.xcresult
+          path: ${{ runner.temp }}/ENGAGEHF-UITests-${{ matrix.shard }}-${{ github.run_attempt }}.xcresult
+          if-no-files-found: warn
+          overwrite: true
+          retention-days: 7
+
+  uitests:
+    # Named for the check that the branch protection on main requires; the shards report separately.
+    name: Test using xcodebuild or run fastlane
+    if: always()
+    needs: uitestrun
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check UI test shards
+        env:
+          SHARD_RESULT: ${{ needs.uitestrun.result }}
+        run: test "$SHARD_RESULT" = "success"
+
   uploadcoveragereport:
     name: Upload Coverage Report
-    needs: buildandtest
+    needs: [unittests, uitests]
     uses: SchmiedmayerLab/.github/.github/workflows/coverage.yml@v0.5
     permissions:
       contents: read
       actions: read
     with:
-      coveragereports: ENGAGEHF.xcresult
+      coveragereports: ENGAGEHF-*.xcresult
     secrets:
       token: ${{ secrets.CODECOV_TOKEN }}
