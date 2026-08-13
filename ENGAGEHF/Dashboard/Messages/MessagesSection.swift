@@ -71,7 +71,7 @@ struct MessagesSection: View {
                             messageManager.addMockMessage()
                         },
                         label: {
-                            Text("Add mock notification")
+                            Text(verbatim: "Add mock notification")
                         }
                     )
                 }

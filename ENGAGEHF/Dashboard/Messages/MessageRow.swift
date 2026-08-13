@@ -190,7 +190,7 @@ struct MessageRow: View {
                             messageManager.addMockMessage()
                         },
                         label: {
-                            Text("Add Mock")
+                            Text(verbatim: "Add Mock")
                         }
                     )
                     AsyncButton(
@@ -198,7 +198,7 @@ struct MessageRow: View {
                             messageManager.makeMockMessagesProcessing()
                         },
                         label: {
-                            Text("Set Processing")
+                            Text(verbatim: "Set Processing")
                         }
                     )
                 }
