@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-      "shouldTranslate" : false
-    },
     "%@ Date: %@" : {
       "comment" : "Accessability label used in VitalsCard and MeasurementListRow.",
       "localizations" : {
