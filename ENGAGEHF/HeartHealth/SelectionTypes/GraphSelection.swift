@@ -26,19 +26,19 @@ enum GraphSelection: CaseIterable, Identifiable, CustomStringConvertible, Equata
     
     var description: String {
         switch self {
-        case .symptoms: "Symptoms"
-        case .weight: "Weight"
-        case .heartRate: "HR"
-        case .bloodPressure: "BP"
+        case .symptoms: String(localized: "Symptoms", comment: "Graph selection short label")
+        case .weight: String(localized: "Weight", comment: "Graph selection short label")
+        case .heartRate: String(localized: "HR", comment: "Graph selection short label for Heart Rate")
+        case .bloodPressure: String(localized: "BP", comment: "Graph selection short label for Blood Pressure")
         }
     }
-    
+
     var fullName: String {
         switch self {
-        case .symptoms: "Symptom Score"
-        case .weight: "Body Weight"
-        case .heartRate: "Heart Rate"
-        case .bloodPressure: "Blood Pressure"
+        case .symptoms: String(localized: "Symptom Score", comment: "Graph selection full name")
+        case .weight: String(localized: "Body Weight", comment: "Graph selection full name")
+        case .heartRate: String(localized: "Heart Rate", comment: "Graph selection full name")
+        case .bloodPressure: String(localized: "Blood Pressure", comment: "Graph selection full name")
         }
     }
     

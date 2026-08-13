@@ -74,10 +74,10 @@ extension ExpandableSection where Parent == Text {
     List {
         ExpandableSection(
             content: {
-                Text("Hello, world!")
+                Text(verbatim: "Hello, world!")
             },
             header: {
-                Text("Expandable")
+                Text(verbatim: "Expandable")
             }
         )
     }
@@ -86,7 +86,7 @@ extension ExpandableSection where Parent == Text {
 #Preview("String Header") {
     List {
         ExpandableSection("Expandable") {
-            Text("Hello, world!")
+            Text(verbatim: "Hello, world!")
         }
     }
 }

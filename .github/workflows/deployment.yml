@@ -77,7 +77,7 @@ jobs:
       environment: ${{ steps.determineenvironment.outputs.environment }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Determine Environment
         id: determineenvironment
         run: |
@@ -99,7 +99,7 @@ jobs:
       version: ${{ steps.script.outputs.version }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - uses: actions-ecosystem/action-get-latest-tag@v1
         id: get-latest-tag
         with:

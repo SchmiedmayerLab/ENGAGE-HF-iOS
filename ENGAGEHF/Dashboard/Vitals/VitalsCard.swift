@@ -11,7 +11,10 @@ import SwiftUI
 
 
 struct VitalsCard: View {
+    /// Identifies the card to assistive technologies, and is not shown to the participant.
     let type: String
+    /// Passed in whole rather than composed around ``type``, which is not a localizable value.
+    let emptyStateDescription: LocalizedStringKey
     let units: String
     let measurement: (value: String, date: String)?
     
@@ -34,7 +37,7 @@ struct VitalsCard: View {
                         .foregroundStyle(Color.secondary)
                         .accessibilityLabel("\(type) Date: \(measurement.date)")
                 } else {
-                    Text("No recent \(type.lowercased()) measurement available")
+                    Text(emptyStateDescription)
                         .font(.caption)
                         .multilineTextAlignment(.center)
                         .accessibilityLabel("No vitals")
@@ -56,6 +59,7 @@ struct VitalsCard: View {
     
     return VitalsCard(
         type: "Weight",
+        emptyStateDescription: "No recent weight measurement available",
         units: "kg",
         measurement: (
             value: "\(dummyWeight.quantity.doubleValue(for: .gramUnit(with: .kilo)))",
@@ -74,6 +78,7 @@ struct VitalsCard: View {
     
     return VitalsCard(
         type: "Heart Rate",
+        emptyStateDescription: "No recent heart rate measurement available",
         units: "BPM",
         measurement: (
             value: "\(Int(dummyHR.quantity.doubleValue(for: .count().unitDivided(by: .minute()))))",
@@ -101,6 +106,7 @@ struct VitalsCard: View {
     
     return VitalsCard(
         type: "Blood Pressure",
+        emptyStateDescription: "No recent blood pressure measurement available",
         units: "mmHg",
         measurement: (
             value: "\(Int(dummySystolic.quantity.doubleValue(for: .millimeterOfMercury())))/\(Int(dummyDiastolic.quantity.doubleValue(for: .millimeterOfMercury())))",
@@ -110,5 +116,5 @@ struct VitalsCard: View {
 }
 
 #Preview("None") {
-    VitalsCard(type: "Weight", units: "lb", measurement: nil)
+    VitalsCard(type: "Weight", emptyStateDescription: "No recent weight measurement available", units: "lb", measurement: nil)
 }

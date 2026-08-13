@@ -68,7 +68,7 @@ extension List {
                         ForEach(0..<2) { _ in
                             StudyApplicationListCard {
                                 HStack {
-                                    Text("Content ...")
+                                    Text(verbatim: "Content ...")
                                     Spacer()
                                 }
                             }
@@ -76,14 +76,14 @@ extension List {
                             .listRowSeparator(.hidden)
                     },
                     header: {
-                        Text("\(.now, style: .date)")
+                        Text(Date.now, style: .date)
                             .studyApplicationHeaderStyle()
                     }
                 )
             }
         }
             .studyApplicationList()
-            .navigationTitle("List With Sections")
+            .navigationTitle(Text(verbatim: "List With Sections"))
     }
 }
 
@@ -93,14 +93,14 @@ extension List {
             ForEach(0..<2) { _ in
                 StudyApplicationListCard {
                     HStack {
-                        Text("Content ...")
+                        Text(verbatim: "Content ...")
                         Spacer()
                     }
                 }
             }
         }
             .studyApplicationList()
-            .navigationTitle("List Without Sections")
+            .navigationTitle(Text(verbatim: "List Without Sections"))
     }
 }
 #endif

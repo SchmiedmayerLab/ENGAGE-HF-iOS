@@ -67,8 +67,8 @@ struct VideoView: View {
             @Bindable var navigationManager = navigationManager
             
             NavigationStack(path: $navigationManager.educationPath) {
-                Button("Tap Here") {
-                    navigationManager.pushEducation(previewVideo)
+                Button(action: { navigationManager.pushEducation(previewVideo) }) {
+                    Text(verbatim: "Tap Here")
                 }
                     .navigationDestination(for: Video.self) { video in
                         VideoView(video)
@@ -111,8 +111,8 @@ struct VideoView: View {
             @Bindable var navigationManager = navigationManager
             
             NavigationStack(path: $navigationManager.educationPath) {
-                Button("Tap Here") {
-                    navigationManager.pushEducation(previewVideo)
+                Button(action: { navigationManager.pushEducation(previewVideo) }) {
+                    Text(verbatim: "Tap Here")
                 }
                     .navigationDestination(for: Video.self) { video in
                         VideoView(video)

@@ -48,7 +48,7 @@ struct PositionedCurrentLabel: View {
         var body: some View {
             VStack {
                 Gauge(value: value, in: minimum...maximum) {
-                    Text("Expected Progress: \((value - minimum) / (maximum - minimum))")
+                    Text(verbatim: "Expected Progress: \((value - minimum) / (maximum - minimum))")
                 } currentValueLabel: {
                     Text(value.asString() + " mg")
                         .background(.yellow)

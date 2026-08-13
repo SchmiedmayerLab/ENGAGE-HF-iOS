@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "shouldTranslate" : false
     },
     "%@ Date: %@" : {
       "comment" : "Accessability label used in VitalsCard and MeasurementListRow.",
@@ -56,6 +56,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ Cantidad: %2$@"
+          }
+        }
+      }
+    },
+    "%@ Symbol" : {
+      "comment" : "Accessibility label for message action icon",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Símbolo"
           }
         }
       }
@@ -233,17 +244,6 @@
         }
       }
     },
-    "Add Medications" : {
-      "comment" : "The text displayed on the button to add medications within the Medications view.",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Añadir medicamentos"
-          }
-        }
-      }
-    },
     "All Data" : {
       "comment" : "The text displayed in the MeasurementListHeader view.",
       "localizations" : {
@@ -310,6 +310,17 @@
         }
       }
     },
+    "Blood Pressure" : {
+      "comment" : "Graph selection full name",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Presión arterial"
+          }
+        }
+      }
+    },
     "bloodPressureMissing" : {
       "comment" : "Displayed in the MeasurementListSection of the Heart Health view when no Blood Pressure history found.",
       "localizations" : {
@@ -334,6 +345,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dispositivos Bluetooth"
+          }
+        }
+      }
+    },
+    "Body Weight" : {
+      "comment" : "Graph selection full name",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peso corporal"
+          }
+        }
+      }
+    },
+    "BP" : {
+      "comment" : "Graph selection short label for Blood Pressure",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PA"
           }
         }
       }
@@ -410,6 +443,17 @@
         }
       }
     },
+    "Current Medications" : {
+      "comment" : "Medication section header",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medicamentos actuales"
+          }
+        }
+      }
+    },
     "daily" : {
       "comment" : "Schedule frequency",
       "localizations" : {
@@ -417,6 +461,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "diariamente"
+          }
+        }
+      }
+    },
+    "Daily" : {
+      "comment" : "Date granularity picker label",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diario"
           }
         }
       }
@@ -471,6 +526,28 @@
         }
       }
     },
+    "Dizziness" : {
+      "comment" : "Symptom type picker label",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mareos"
+          }
+        }
+      }
+    },
+    "Dizziness Score" : {
+      "comment" : "Symptom score full name",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puntuación de mareos"
+          }
+        }
+      }
+    },
     "Education" : {
       "comment" : "Displayed in the tab item label and navigation title of the Educations view.",
       "localizations" : {
@@ -494,7 +571,15 @@
       }
     },
     "Empty %@ List" : {
-
+      "comment" : "An accessibility label for the empty list view.",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista %@ vacía"
+          }
+        }
+      }
     },
     "Enable Notifications in Settings" : {
       "comment" : "The text displayed on the button that is shown in the NotificationSettingsView if notifications are not authorized.",
@@ -689,6 +774,17 @@
         }
       }
     },
+    "Heart Rate" : {
+      "comment" : "Graph selection full name",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frecuencia cardíaca"
+          }
+        }
+      }
+    },
     "heartRateMissing" : {
       "comment" : "Displayed in the MeasurementListSection of the Heart Health view when no heart rate measurements were found.",
       "localizations" : {
@@ -724,6 +820,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inicio"
+          }
+        }
+      }
+    },
+    "HR" : {
+      "comment" : "Graph selection short label for Heart Rate",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FC"
+          }
+        }
+      }
+    },
+    "Improvement Available" : {
+      "comment" : "Medication recommendation type",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mejora disponible"
           }
         }
       }
@@ -982,6 +1100,28 @@
         }
       }
     },
+    "kg" : {
+      "comment" : "Unit abbreviation for kilograms",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kg"
+          }
+        }
+      }
+    },
+    "lb" : {
+      "comment" : "Unit abbreviation for pounds",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lb"
+          }
+        }
+      }
+    },
     "Legend" : {
       "comment" : "The text displayed in the header of the ColorLegend view.",
       "localizations" : {
@@ -1065,6 +1205,28 @@
         }
       }
     },
+    "Medications That May Help" : {
+      "comment" : "Medication section header",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medicamentos que podrían ayudar"
+          }
+        }
+      }
+    },
+    "Message: %@, description: %@, action: %@." : {
+      "comment" : "Accessibility label for a message card",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensaje: %1$@, descripción: %2$@, acción: %3$@."
+          }
+        }
+      }
+    },
     "Messages" : {
       "comment" : "The text displayed in the header of MessagesSection and MessageRow views.",
       "localizations" : {
@@ -1098,6 +1260,17 @@
         }
       }
     },
+    "mmHg" : {
+      "comment" : "Unit abbreviation for millimeters of mercury",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mmHg"
+          }
+        }
+      }
+    },
     "Moderate" : {
       "comment" : "Dizziness symptom score label.",
       "localizations" : {
@@ -1109,6 +1282,17 @@
         }
       }
     },
+    "Monthly" : {
+      "comment" : "Date granularity picker label",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensual"
+          }
+        }
+      }
+    },
     "More information is needed to make a recommendation." : {
       "comment" : "Action required color legend entry.",
       "localizations" : {
@@ -1116,6 +1300,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se necesita más información para hacer una recomendación."
+          }
+        }
+      }
+    },
+    "More Lab Observations Required" : {
+      "comment" : "Medication recommendation type",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se requieren más observaciones de laboratorio"
+          }
+        }
+      }
+    },
+    "More Patient Observations Required" : {
+      "comment" : "Medication recommendation type",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se requieren más observaciones del paciente"
+          }
+        }
+      }
+    },
+    "No Action Required" : {
+      "comment" : "Medication recommendation type",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se requiere acción"
           }
         }
       }
@@ -1142,6 +1359,17 @@
         }
       }
     },
+    "No description" : {
+      "comment" : "Accessibility placeholder for missing message description",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin descripción"
+          }
+        }
+      }
+    },
     "No Educational Videos" : {
       "comment" : "The title displayed in the ContentUnavailableView of the Education view.",
       "localizations" : {
@@ -1164,13 +1392,53 @@
         }
       }
     },
-    "No recent %@ measurement available" : {
+    "No recent blood pressure measurement available" : {
       "comment" : "The text displayed in the VitalsCard if no measurement is available.",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recent blood pressure measurement available"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No hay mediciones recientes de %@ disponibles"
+            "value" : "No hay mediciones recientes de presión arterial disponibles"
+          }
+        }
+      }
+    },
+    "No recent heart rate measurement available" : {
+      "comment" : "The text displayed in the VitalsCard if no measurement is available.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recent heart rate measurement available"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay mediciones recientes de frecuencia cardíaca disponibles"
+          }
+        }
+      }
+    },
+    "No recent weight measurement available" : {
+      "comment" : "The text displayed in the VitalsCard if no measurement is available.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recent weight measurement available"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay mediciones recientes de peso disponibles"
           }
         }
       }
@@ -1308,6 +1576,28 @@
         }
       }
     },
+    "Overall" : {
+      "comment" : "Symptom type picker label",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General"
+          }
+        }
+      }
+    },
+    "Overall Score" : {
+      "comment" : "Symptom score full name",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puntuación general"
+          }
+        }
+      }
+    },
     "PDF" : {
       "comment" : "The text displayed as one of the options of the shareModeSelector in the HealthSummaryView. ",
       "localizations" : {
@@ -1315,6 +1605,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "PDF"
+          }
+        }
+      }
+    },
+    "Personal Target Dose Reached" : {
+      "comment" : "Medication recommendation type",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosis objetivo personal alcanzada"
+          }
+        }
+      }
+    },
+    "Physical" : {
+      "comment" : "Symptom type picker label",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Físico"
+          }
+        }
+      }
+    },
+    "Physical Limits Score" : {
+      "comment" : "Symptom score full name",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puntuación de límites físicos"
           }
         }
       }
@@ -1409,6 +1732,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Código QR para compartir su resumen de salud con su médico"
+          }
+        }
+      }
+    },
+    "Quality of Life" : {
+      "comment" : "Symptom type picker label",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calidad de vida"
+          }
+        }
+      }
+    },
+    "Quality of Life Score" : {
+      "comment" : "Symptom score full name",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puntuación de calidad de vida"
           }
         }
       }
@@ -1630,17 +1975,6 @@
         }
       }
     },
-    "Show Measurements" : {
-      "comment" : "The text displayed on one of the toolbar buttons for debug and test environments in the Dashboard view.",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar mediciones"
-          }
-        }
-      }
-    },
     "Show more" : {
       "comment" : "The text displayed on the ShowMoreButton if content is collapsed.",
       "localizations" : {
@@ -1663,6 +1997,39 @@
         }
       }
     },
+    "Social" : {
+      "comment" : "Symptom type picker label",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Social"
+          }
+        }
+      }
+    },
+    "Social Limits Score" : {
+      "comment" : "Symptom score full name",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puntuación de límites sociales"
+          }
+        }
+      }
+    },
+    "Specific Symptoms" : {
+      "comment" : "Symptom type picker label",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Síntomas específicos"
+          }
+        }
+      }
+    },
     "Start Questionnaire" : {
       "comment" : "The description of the completeQuestionnaire MessageAction.",
       "localizations" : {
@@ -1681,6 +2048,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cuestionario"
+          }
+        }
+      }
+    },
+    "Symptom Frequency Score" : {
+      "comment" : "Symptom score full name",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puntuación de frecuencia de síntomas"
+          }
+        }
+      }
+    },
+    "Symptom Score" : {
+      "comment" : "Graph selection full name",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puntuación de síntomas"
           }
         }
       }
@@ -1749,6 +2138,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Esta puntuación representa su nivel de satisfacción con sus síntomas cardíacos. Las puntuaciones más altas significan que está más satisfecho en general, mientras que las puntuaciones más bajas significan que está menos satisfecho con su rendimiento."
+          }
+        }
+      }
+    },
+    "Symptoms" : {
+      "comment" : "Graph selection short label",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Síntomas"
           }
         }
       }
@@ -1837,6 +2237,17 @@
         }
       }
     },
+    "Target Dose Reached" : {
+      "comment" : "Medication recommendation type",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosis objetivo alcanzada"
+          }
+        }
+      }
+    },
     "Thank you for participating in the\nENGAGE-HF study!" : {
       "comment" : "The title that is displayed in the StudyConcluded view.",
       "localizations" : {
@@ -1914,17 +2325,6 @@
         }
       }
     },
-    "Trigger Blood Pressure Measurement" : {
-      "comment" : "The text displayed on one of the toolbar buttons for debug and test environments in the Dashboard view.",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Activar medición de presión arterial"
-          }
-        }
-      }
-    },
     "Trigger Sheet" : {
       "comment" : "The text displayed on the button to open the AddMeasurementView.",
       "localizations" : {
@@ -1932,17 +2332,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hoja de activación"
-          }
-        }
-      }
-    },
-    "Trigger Weight Measurement" : {
-      "comment" : "The text displayed on one of the toolbar buttons for debug and test environments in the Dashboard view.",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Activación de medición de peso"
           }
         }
       }
@@ -2120,6 +2509,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cuando el corazón está débil, su cuerpo puede retener más sal y agua, y su peso puede aumentar rápidamente. Esto puede causar dificultad para respirar, hinchazón de piernas y distensión abdominal.\n\nEs normal que haya pequeños cambios de peso. Sin embargo, si aumenta más de 3 libras en un día o más de 5 libras en una semana, consulte con su equipo médico. \nPésese todos los días a la misma hora para ver si hay acumulación de líquido. Para obtener más información, vea el video sobre el peso."
+          }
+        }
+      }
+    },
+    "Weekly" : {
+      "comment" : "Date granularity picker label",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semanal"
+          }
+        }
+      }
+    },
+    "Weight" : {
+      "comment" : "Graph selection short label",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peso"
           }
         }
       }

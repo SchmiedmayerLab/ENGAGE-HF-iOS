@@ -99,8 +99,8 @@ struct QuestionnaireSheetView: View {
         
         
         var body: some View {
-            Button("Tap Here") {
-                questionnaireId = "0"
+            Button(action: { questionnaireId = "0" }) {
+                Text(verbatim: "Tap Here")
             }
                 .buttonStyle(.borderedProminent)
                 .sheet(item: $questionnaireId) { questionnaireId in

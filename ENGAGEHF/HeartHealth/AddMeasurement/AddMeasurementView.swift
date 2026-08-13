@@ -98,16 +98,18 @@ struct AddMeasurementView: View {
         switch type {
         case .bloodPressure:
             self.fields = [
-                FieldDetails(title: "Systolic"),
-                FieldDetails(title: "Diastolic")
+                FieldDetails(title: String(localized: "Systolic", comment: "Blood pressure field label")),
+                FieldDetails(title: String(localized: "Diastolic", comment: "Blood pressure field label"))
             ]
         case .weight:
             self.fields = [
-                FieldDetails(title: Locale.current.measurementSystem == .us ? "lb" : "kg")
+                FieldDetails(title: Locale.current.measurementSystem == .us
+                    ? String(localized: "lb", comment: "Unit abbreviation for pounds")
+                    : String(localized: "kg", comment: "Unit abbreviation for kilograms"))
             ]
         case .heartRate:
             self.fields = [
-                FieldDetails(title: "BPM")
+                FieldDetails(title: String(localized: "BPM", comment: "Unit abbreviation for beats per minute"))
             ]
         default:
             self.fields = []

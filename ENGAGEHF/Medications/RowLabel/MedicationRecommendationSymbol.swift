@@ -31,7 +31,12 @@ struct MedicationRecommendationSymbol: View {
             .resizable()
             .frame(width: 35, height: 35)
             .foregroundStyle(type.style.color)
-            .accessibilityLabel("Medication Label: \(type.rawValue)")
+            .accessibilityLabel(
+                String(
+                    localized: "Medication Label: \(type.localizedDescription)",
+                    comment: "Accessibility label for medication recommendation symbol"
+                )
+            )
     }
 }
 

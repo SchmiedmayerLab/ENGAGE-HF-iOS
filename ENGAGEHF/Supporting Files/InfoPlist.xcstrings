@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "CFBundleName" : {
-      "extractionState" : "manual",
+      "comment" : "Bundle name",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19,7 +19,7 @@
       }
     },
     "NSBluetoothAlwaysUsageDescription" : {
-      "extractionState" : "manual",
+      "comment" : "Privacy - Bluetooth Always Usage Description",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -36,140 +36,36 @@
       }
     },
     "NSCameraUsageDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Este mensaje no debería aparecer nunca. Ajústelo cuando empiece a usar la información de la cámara. Debemos incluirlo aquí porque ResearchKit puede usarlo y, si no lo incluye, se genera un error en AppStore Connect."
-          }
-        }
-      }
+      "comment" : "Privacy - Camera Usage Description",
+      "shouldTranslate" : false
     },
     "NSHealthShareUsageDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The ENGAGE-HF app uses the step count to demonstrate Spezi's integration with HealthKit."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La aplicación ENGAGE-HF utiliza el recuento de pasos para demostrar la integración de Spezi con HealthKit."
-          }
-        }
-      }
+      "comment" : "Privacy - Health Share Usage Description",
+      "shouldTranslate" : false
     },
     "NSHealthUpdateUsageDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The ENGAGE-HF app uses the step count to demonstrate Spezi's integration with HealthKit."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La aplicación ENGAGE-HF utiliza el recuento de pasos para demostrar la integración de Spezi con HealthKit."
-          }
-        }
-      }
+      "comment" : "Privacy - Health Update Usage Description",
+      "shouldTranslate" : false
     },
     "NSLocationAlwaysAndWhenInUseUsageDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This message should never appear. Please adjust this when you start using location information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Este mensaje no debería aparecer nunca. Ajústelo cuando empiece a usar la información de ubicación. Debemos incluirlo aquí porque ResearchKit puede usarlo y, si no lo incluye, se genera un error en AppStore Connect."
-          }
-        }
-      }
+      "comment" : "Privacy - Location Always and When In Use Usage Description",
+      "shouldTranslate" : false
     },
     "NSLocationWhenInUseUsageDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This message should never appear. Please adjust this when you start using location information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Este mensaje no debería aparecer nunca. Ajústelo cuando empiece a usar la información de ubicación. Debemos incluirlo aquí porque ResearchKit puede usarlo y, si no lo incluye, se genera un error en AppStore Connect."
-          }
-        }
-      }
+      "comment" : "Privacy - Location When In Use Usage Description",
+      "shouldTranslate" : false
     },
     "NSMicrophoneUsageDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This message should never appear. Please adjust this when you start using microphone information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Este mensaje no debería aparecer nunca. Ajústelo cuando empiece a usar la información del micrófono. Debemos incluirlo aquí porque ResearchKit puede usarlo y, si no lo incluye, se genera un error en AppStore Connect."
-          }
-        }
-      }
+      "comment" : "Privacy - Microphone Usage Description",
+      "shouldTranslate" : false
     },
     "NSMotionUsageDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This message should never appear. Please adjust this when you start using motion information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Este mensaje no debería aparecer nunca. Ajústelo cuando empiece a usar la información de movimiento. Debemos incluirlo aquí porque ResearchKit puede usarlo y, si no lo incluye, se genera un error en AppStore Connect."
-          }
-        }
-      }
+      "comment" : "Privacy - Motion Usage Description",
+      "shouldTranslate" : false
     },
     "NSSpeechRecognitionUsageDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This message should never appear. Please adjust this when you start using speech recognition. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Este mensaje no debería aparecer nunca. Ajústelo cuando empiece a usar la información de voz. Debemos incluirlo aquí porque ResearchKit puede usarlo y, si no lo incluye, se genera un error en AppStore Connect."
-          }
-        }
-      }
+      "comment" : "Privacy - Speech Recognition Usage Description",
+      "shouldTranslate" : false
     }
   },
   "version" : "1.0"
