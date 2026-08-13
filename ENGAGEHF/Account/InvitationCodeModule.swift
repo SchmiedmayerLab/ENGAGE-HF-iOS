@@ -61,13 +61,7 @@ final class InvitationCodeModule: Module, EnvironmentAccessible, @unchecked Send
                 _ = try? await Auth.auth().currentUser?.getIDToken(forcingRefresh: true)
 
                 // Now that we've forced refresh on the auth token, refresh the content of the managers.
-                videoManager.refreshContent()
-                await userMetaDataManager.refreshContent()
-                await medicationsManager.refreshContent()
-                notificationManager.refreshContent()
-                await messageManager.refreshContent()
-                navigationManager.refreshContent()
-                await vitalsManager.refreshContent()
+                await refreshManagers()
 
                 // Returning success while the code is still absent would let the invitation flow
                 // advance and then bounce the account back to the setup sheet.
@@ -122,6 +116,16 @@ final class InvitationCodeModule: Module, EnvironmentAccessible, @unchecked Send
         return await account.details?.invitationCode != nil
     }
 
+    private func refreshManagers() async {
+        videoManager.refreshContent()
+        await userMetaDataManager.refreshContent()
+        await medicationsManager.refreshContent()
+        notificationManager.refreshContent()
+        await messageManager.refreshContent()
+        navigationManager.refreshContent()
+        await vitalsManager.refreshContent()
+    }
+
     func setupTestEnvironment(invitationCode: String) async throws {
         guard let account, let accountService else {
             guard FeatureFlags.disableFirebase else {
@@ -155,6 +159,10 @@ final class InvitationCodeModule: Module, EnvironmentAccessible, @unchecked Send
             // successful login does not imply the account carries an invitation code.
             if !(await waitForInvitationCode(timeout: .seconds(5))) {
                 try await verifyOnboardingCode(invitationCode)
+            } else {
+                // The managers attach their listeners from account events, which a relaunch's quick
+                // logout and login can outpace; refreshing mirrors what enrollment does explicitly.
+                await refreshManagers()
             }
             return
         }
