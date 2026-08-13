@@ -51,26 +51,34 @@ final class InvitationCodeModule: Module, EnvironmentAccessible, @unchecked Send
                     logger.debug("About to enroll user")
                     let enrollUser = Functions.functions().httpsCallable("enrollUser")
                     _ = try await enrollUser.call(["invitationCode": invitationCode])
-                    _ = try? await Auth.auth().currentUser?.getIDToken(forcingRefresh: true)
-                    
-                    // Now that we've forced refresh on the auth token, refresh the content of the managers.
-                    videoManager.refreshContent()
-                    await userMetaDataManager.refreshContent()
-                    await medicationsManager.refreshContent()
-                    notificationManager.refreshContent()
-                    await messageManager.refreshContent()
-                    navigationManager.refreshContent()
-                    await vitalsManager.refreshContent()
-
-                    if !(await waitForInvitationCode()) {
-                        logger.warning("Enrolled successfully, but the invitation code has not reached the account details yet.")
-                    }
-
-                    logger.debug("Successfully enrolled user!")
+                } catch let error as NSError where FunctionsErrorCode(rawValue: error.code) == .alreadyExists {
+                    // An earlier launch already enrolled this account; only the local state is missing.
+                    logger.debug("User is already enrolled in the study.")
                 } catch {
                     logger.error("Failed to enroll user: \(error)")
                     throw InvitationCodeError.invitationCodeInvalid
                 }
+                _ = try? await Auth.auth().currentUser?.getIDToken(forcingRefresh: true)
+
+                // Now that we've forced refresh on the auth token, refresh the content of the managers.
+                videoManager.refreshContent()
+                await userMetaDataManager.refreshContent()
+                await medicationsManager.refreshContent()
+                notificationManager.refreshContent()
+                await messageManager.refreshContent()
+                navigationManager.refreshContent()
+                await vitalsManager.refreshContent()
+
+                // Returning success while the code is still absent would let the invitation flow
+                // advance and then bounce the account back to the setup sheet.
+                guard await waitForInvitationCode() else {
+                    logger.error("The invitation code did not reach the local account details in time.")
+                    throw InvitationCodeError.generalError(
+                        String(localized: "The enrollment has not finished syncing yet. Please try again.")
+                    )
+                }
+
+                logger.debug("Successfully enrolled user!")
             }
         } catch let error as NSError {
             if let errorCode = FunctionsErrorCode(rawValue: error.code) {
@@ -105,7 +113,11 @@ final class InvitationCodeModule: Module, EnvironmentAccessible, @unchecked Send
             if await account.details?.invitationCode != nil {
                 return true
             }
-            try? await Task.sleep(for: .milliseconds(100))
+            do {
+                try await Task.sleep(for: .milliseconds(100))
+            } catch {
+                break
+            }
         }
         return await account.details?.invitationCode != nil
     }

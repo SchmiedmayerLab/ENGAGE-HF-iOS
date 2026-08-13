@@ -2248,6 +2248,22 @@
         }
       }
     },
+    "The enrollment has not finished syncing yet. Please try again." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The enrollment has not finished syncing yet. Please try again."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La inscripción aún no ha terminado de sincronizarse. Inténtelo de nuevo."
+          }
+        }
+      }
+    },
     "The invitation code is invalid or has already been used." : {
       "comment" : "Invitation Code Invalid",
       "localizations" : {
