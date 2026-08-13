@@ -107,7 +107,7 @@ final class MessagesUITests: XCTestCase {
         XCTAssert(uptitrationMessage.isHittable)
 
         uptitrationMessage.tap()
-        try? await Task.sleep(for: .seconds(1))
+        app.staticTexts["Medications"].assertExists()
         app.goTo(tab: "Home")
         uptitrationMessage.assertDisappears()
         
@@ -118,7 +118,7 @@ final class MessagesUITests: XCTestCase {
         XCTAssert(vitalsMessage.isHittable)
 
         vitalsMessage.tap()
-        try? await Task.sleep(for: .seconds(1))
+        app.staticTexts["Heart Health"].assertExists()
         app.goTo(tab: "Home")
         vitalsMessage.assertExists()
     }

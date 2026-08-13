@@ -82,7 +82,7 @@ final class HeartHealthUITests: XCTestCase {
         
         // Test to make sure the All Data section has an item in it
         app.scrollToElement(app.staticTexts["Weight Quantity: \(expectedWeight)"])
-        XCTAssertFalse(app.staticTexts["Empty Weight List"].waitForExistence(timeout: 0.5))
+        app.staticTexts["Empty Weight List"].assertDisappears()
         app.staticTexts["Weight Unit: \(expectedUnit)"].assertExists()
         app.staticTexts["Weight Date: Jun 5, 2024"].assertExists()
         
@@ -110,7 +110,7 @@ final class HeartHealthUITests: XCTestCase {
         
         // Test to make sure the All Data section has an item in it
         app.scrollToElement(app.staticTexts["HR Quantity: 62"])
-        XCTAssertFalse(app.staticTexts["Empty HR List"].waitForExistence(timeout: 0.5))
+        app.staticTexts["Empty HR List"].assertDisappears()
         app.staticTexts["HR Unit: BPM"].assertExists()
         app.staticTexts["HR Date: Jun 5, 2024"].assertExists()
         
@@ -138,7 +138,7 @@ final class HeartHealthUITests: XCTestCase {
         
         // Test to make sure the All Data section has an item in it
         app.scrollToElement(app.staticTexts["BP Quantity: 103/64"])
-        XCTAssertFalse(app.staticTexts["Empty BP List"].waitForExistence(timeout: 0.5))
+        app.staticTexts["Empty BP List"].assertDisappears()
         app.staticTexts["BP Unit: mmHg"].assertExists()
         app.staticTexts["BP Date: Jun 5, 2024"].assertExists()
         

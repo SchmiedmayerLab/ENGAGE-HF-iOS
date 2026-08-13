@@ -87,6 +87,9 @@ extension XCUIApplication {
             case .swipingDown:
                 swipeDown()
             }
+            // A list renders the rows a swipe brought into range only once it settles. Without this the
+            // loop would spend its swipes faster than the rows appear and scroll straight past the target.
+            _ = element.wait(for: \.isHittable, toEqual: true, timeout: 1)
             remainingScrolls -= 1
         }
 
