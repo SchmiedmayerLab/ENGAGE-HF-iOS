@@ -29,6 +29,12 @@ fi
 
 cd "$GITHUB_WORKSPACE"
 
+# A shard inherits whichever simulator the previous job left behind, and the app keeps its account
+# there. Without this a shard can start already signed in but not enrolled, which strands it on the
+# invitation code step with no tab bar for the tests to navigate.
+xcrun simctl shutdown all || true
+xcrun simctl erase all
+
 xcodebuild \
     test-without-building \
     -testProductsPath "$TEST_PRODUCTS_PATH" \
