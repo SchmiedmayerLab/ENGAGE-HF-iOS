@@ -40,7 +40,6 @@ struct VitalsCard: View {
                     Text(emptyStateDescription)
                         .font(.caption)
                         .multilineTextAlignment(.center)
-                        .accessibilityLabel("No vitals")
                 }
             }
                 .frame(maxWidth: .infinity, idealHeight: cardHeight, maxHeight: .infinity)

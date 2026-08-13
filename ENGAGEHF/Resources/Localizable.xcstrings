@@ -1443,17 +1443,6 @@
         }
       }
     },
-    "No vitals" : {
-      "comment" : "Accessability label for the VitalsCard if no measurement is available.",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No hay signos vitales"
-          }
-        }
-      }
-    },
     "None" : {
       "comment" : "Dizziness symptom score label.",
       "localizations" : {
