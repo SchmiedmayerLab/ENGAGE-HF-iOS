@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "CFBundleName" : {
-      "extractionState" : "manual",
+      "comment" : "Bundle name",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19,7 +19,7 @@
       }
     },
     "NSBluetoothAlwaysUsageDescription" : {
-      "extractionState" : "manual",
+      "comment" : "Privacy - Bluetooth Always Usage Description",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -36,7 +36,7 @@
       }
     },
     "NSCameraUsageDescription" : {
-      "extractionState" : "manual",
+      "comment" : "Privacy - Camera Usage Description",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -53,7 +53,7 @@
       }
     },
     "NSHealthShareUsageDescription" : {
-      "extractionState" : "manual",
+      "comment" : "Privacy - Health Share Usage Description",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -70,7 +70,7 @@
       }
     },
     "NSHealthUpdateUsageDescription" : {
-      "extractionState" : "manual",
+      "comment" : "Privacy - Health Update Usage Description",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -87,7 +87,7 @@
       }
     },
     "NSLocationAlwaysAndWhenInUseUsageDescription" : {
-      "extractionState" : "manual",
+      "comment" : "Privacy - Location Always and When In Use Usage Description",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -104,7 +104,7 @@
       }
     },
     "NSLocationWhenInUseUsageDescription" : {
-      "extractionState" : "manual",
+      "comment" : "Privacy - Location When In Use Usage Description",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -121,7 +121,7 @@
       }
     },
     "NSMicrophoneUsageDescription" : {
-      "extractionState" : "manual",
+      "comment" : "Privacy - Microphone Usage Description",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -138,7 +138,7 @@
       }
     },
     "NSMotionUsageDescription" : {
-      "extractionState" : "manual",
+      "comment" : "Privacy - Motion Usage Description",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -155,7 +155,7 @@
       }
     },
     "NSSpeechRecognitionUsageDescription" : {
-      "extractionState" : "manual",
+      "comment" : "Privacy - Speech Recognition Usage Description",
       "localizations" : {
         "en" : {
           "stringUnit" : {
