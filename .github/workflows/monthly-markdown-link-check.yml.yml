@@ -1,5 +1,5 @@
 #
-# This source file is part of the ENGAGE-HF based on the Stanford Spezi Template Application project
+# This source file is part of the ENGAGE-HF iOS open-source project
 #
 # SPDX-FileCopyrightText: 2023 Stanford University and the project authors (see CONTRIBUTORS.md)
 #
@@ -16,6 +16,7 @@ on:
 jobs:
   markdown_link_check:
     name: Markdown Link Check
-    uses: StanfordBDHG/.github/.github/workflows/markdown-link-check.yml@v2
+    uses: SchmiedmayerLab/.github/.github/workflows/markdown-links.yml@v0.5
     permissions:
       contents: read
+      pull-requests: read
