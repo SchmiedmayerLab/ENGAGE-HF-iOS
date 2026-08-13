@@ -61,7 +61,11 @@ final class InvitationCodeModule: Module, EnvironmentAccessible, @unchecked Send
                     await messageManager.refreshContent()
                     navigationManager.refreshContent()
                     await vitalsManager.refreshContent()
-                    
+
+                    if !(await waitForInvitationCode()) {
+                        logger.warning("Enrolled successfully, but the invitation code has not reached the account details yet.")
+                    }
+
                     logger.debug("Successfully enrolled user!")
                 } catch {
                     logger.error("Failed to enroll user: \(error)")
@@ -86,6 +90,26 @@ final class InvitationCodeModule: Module, EnvironmentAccessible, @unchecked Send
         }
     }
 
+    /// Waits until the invitation code reaches the local account details through the Firestore listener.
+    ///
+    /// Enrollment happens server-side, but the account sheet only dismisses once the code arrives in
+    /// ``AccountDetails``; treating enrollment as complete before that leaves a window in which the app
+    /// still shows the invitation prompt and a relaunch strands the account signed in but unenrolled.
+    @discardableResult
+    private func waitForInvitationCode(timeout: Duration = .seconds(10)) async -> Bool {
+        guard let account else {
+            return false
+        }
+        let deadline = ContinuousClock.now.advanced(by: timeout)
+        while ContinuousClock.now < deadline {
+            if await account.details?.invitationCode != nil {
+                return true
+            }
+            try? await Task.sleep(for: .milliseconds(100))
+        }
+        return await account.details?.invitationCode != nil
+    }
+
     func setupTestEnvironment(invitationCode: String) async throws {
         guard let account, let accountService else {
             guard FeatureFlags.disableFirebase else {
@@ -103,14 +127,24 @@ final class InvitationCodeModule: Module, EnvironmentAccessible, @unchecked Send
             try await Task.sleep(for: .seconds(1))
         }
 
+        var loggedIn = false
         do {
             try await accountService.login(userId: email, password: password)
-            return // account was already established previously
+            loggedIn = true
         } catch FirebaseAccountError.invalidCredentials {
             // probably doesn't exist. We try to create a new one below
         } catch {
             logger.error("Failed logging into test account: \(error)")
             throw error
+        }
+
+        if loggedIn {
+            // A previous run can create this account and terminate before enrollment completes, so a
+            // successful login does not imply the account carries an invitation code.
+            if !(await waitForInvitationCode(timeout: .seconds(5))) {
+                try await verifyOnboardingCode(invitationCode)
+            }
+            return
         }
         
         do {
