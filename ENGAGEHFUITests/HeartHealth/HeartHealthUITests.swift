@@ -291,7 +291,7 @@ extension XCUIApplication {
             "Physical",
             "Social",
             "Quality of Life",
-            "Symptoms",
+            "Specific Symptoms",
             "Dizziness"
         ]
         
