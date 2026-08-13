@@ -24,13 +24,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF uses Bluetooth to connect to your blood pressure cuff and weight scale and to record the measurements you take."
+            "value" : "Application must access bluetooth to connect to data collecting devices and retrieve data from weight scale and blood pressure cuff."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF usa Bluetooth para conectarse a su tensiómetro y su báscula y registrar las mediciones que realice."
+            "value" : "La aplicación debe acceder a Bluetooth para conectarse a los dispositivos de recopilación de datos y recuperar datos de la báscula y el tensiómetro."
           }
         }
       }
@@ -41,13 +41,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF does not use the camera for this study."
+            "value" : "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF no usa la cámara en este estudio."
+            "value" : "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         }
       }
@@ -58,13 +58,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF does not read information from the Health app."
+            "value" : "This message should never appear. Please adjust this when you start using health information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF no lee información de la app Salud."
+            "value" : "This message should never appear. Please adjust this when you start using health information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         }
       }
@@ -75,13 +75,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF does not save information to the Health app."
+            "value" : "This message should never appear. Please adjust this when you start using health information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF no guarda información en la app Salud."
+            "value" : "This message should never appear. Please adjust this when you start using health information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         }
       }
@@ -92,13 +92,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF does not use your location for this study."
+            "value" : "This message should never appear. Please adjust this when you start using location information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF no usa su ubicación en este estudio."
+            "value" : "This message should never appear. Please adjust this when you start using location information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         }
       }
@@ -109,13 +109,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF does not use your location for this study."
+            "value" : "This message should never appear. Please adjust this when you start using location information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF no usa su ubicación en este estudio."
+            "value" : "This message should never appear. Please adjust this when you start using location information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         }
       }
@@ -126,13 +126,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF does not use the microphone for this study."
+            "value" : "This message should never appear. Please adjust this when you start using microphone information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF no usa el micrófono en este estudio."
+            "value" : "This message should never appear. Please adjust this when you start using microphone information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         }
       }
@@ -143,13 +143,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF does not use motion and fitness data for this study."
+            "value" : "This message should never appear. Please adjust this when you start using motion information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF no usa los datos de movimiento y estado físico en este estudio."
+            "value" : "This message should never appear. Please adjust this when you start using motion information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         }
       }
@@ -160,13 +160,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF does not use speech recognition for this study."
+            "value" : "This message should never appear. Please adjust this when you start using speech recognition. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ENGAGE-HF no usa el reconocimiento de voz en este estudio."
+            "value" : "This message should never appear. Please adjust this when you start using speech recognition. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect."
           }
         }
       }
