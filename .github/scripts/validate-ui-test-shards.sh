@@ -41,10 +41,13 @@ enumerated_tests="$validation_dir/enumerated-tests.json"
 normalized_tests="$validation_dir/normalized-tests.txt"
 selectors="$validation_dir/selectors.txt"
 
+# The test plan carries the unit tests alongside the user interface tests, and only the latter are
+# sharded, so the enumeration has to be restricted to the same target the manifest describes.
 xcodebuild \
     test-without-building \
     -testProductsPath "$test_products_path" \
     -destination "$destination" \
+    -only-testing:ENGAGEHFUITests \
     -enumerate-tests \
     -test-enumeration-style flat \
     -test-enumeration-format json \
