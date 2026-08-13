@@ -1392,13 +1392,53 @@
         }
       }
     },
-    "No recent %@ measurement available" : {
+    "No recent blood pressure measurement available" : {
       "comment" : "The text displayed in the VitalsCard if no measurement is available.",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recent blood pressure measurement available"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No hay mediciones recientes de %@ disponibles"
+            "value" : "No hay mediciones recientes de presión arterial disponibles"
+          }
+        }
+      }
+    },
+    "No recent heart rate measurement available" : {
+      "comment" : "The text displayed in the VitalsCard if no measurement is available.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recent heart rate measurement available"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay mediciones recientes de frecuencia cardíaca disponibles"
+          }
+        }
+      }
+    },
+    "No recent weight measurement available" : {
+      "comment" : "The text displayed in the VitalsCard if no measurement is available.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recent weight measurement available"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay mediciones recientes de peso disponibles"
           }
         }
       }
