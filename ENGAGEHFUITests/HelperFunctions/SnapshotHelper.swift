@@ -1,5 +1,5 @@
 //
-// This source file is part of the ENGAGE-HF based on the Stanford Spezi Template Application project
+// This source file is part of the ENGAGE-HF iOS open-source project
 // Generated from `fastlane snapshot init` and originally authored by Felix Krause on 10/8/15
 //
 // SPDX-FileCopyrightText: 2023 Stanford University

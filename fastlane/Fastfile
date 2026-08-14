@@ -1,5 +1,5 @@
 #
-# This source file is part of the ENGAGE-HF based on the Stanford Spezi Template Application project
+# This source file is part of the ENGAGE-HF iOS open-source project
 #
 # SPDX-FileCopyrightText: 2023 Stanford University
 #
@@ -10,8 +10,8 @@ default_platform(:ios)
 
 APP_CONFIG = {
   default_environment: "staging",
-  default_app_identifier: "edu.stanford.bdh.engagehf",
-  default_provisioningProfile: "Stanford BDHG ENGAGE-HF",
+  default_app_identifier: "edu.stanford.hrtex",
+  default_provisioningProfile: "ENGAGE-HF",
   default_version_name: "2.0.0",
   default_release_notes: "Bug fixes and performance improvements.",
   scheme: "ENGAGEHF",
@@ -124,7 +124,8 @@ platform :ios do
       derived_data_path: ".derivedData",
       xcargs: [
         "-skipPackagePluginValidation",
-        "-skipMacroValidation"
+        "-skipMacroValidation",
+        "PROVISIONING_PROFILE_SPECIFIER=#{provisioningProfile}"
       ],
       export_options: {
         provisioningProfiles: {
