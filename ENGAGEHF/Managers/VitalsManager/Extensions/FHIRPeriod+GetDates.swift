@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import class ModelsR4.Period
+import struct ModelsR4.Period
 
 
 extension Period {

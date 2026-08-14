@@ -5,9 +5,6 @@
 //
 // SPDX-License-Identifier: MIT
 //
-// Based directly on:
-// https://github.com/StanfordSpezi/SpeziStudyApplication/blob/main/StudyApplication/SharedContext/StudyApplicationListCard.swift#L12
-//
 
 import SwiftUI
 

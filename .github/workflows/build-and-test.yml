@@ -72,6 +72,7 @@ jobs:
             -testPlan 'ENGAGEHF UI Tests' \
             -enableCodeCoverage YES \
             -testProductsPath "$UI_TEST_PRODUCTS_PATH" \
+            -derivedDataPath .derivedData \
             -skipPackagePluginValidation \
             -skipMacroValidation \
             build-for-testing \

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import class ModelsR4.CodeableConcept
+import struct ModelsR4.CodeableConcept
 
 
 extension CodeableConcept {
