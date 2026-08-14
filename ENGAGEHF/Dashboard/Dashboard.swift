@@ -41,23 +41,30 @@ struct Dashboard: View {
                 }
 #if DEBUG
                 .toolbar {
-                    if FeatureFlags.testMockDevices {
-                        ToolbarItemGroup(placement: .secondaryAction) {
-                            Button("Trigger Weight Measurement", systemImage: "scalemass.fill") {
-                                measurements.loadMockWeightMeasurement()
-                            }
-                            Button("Trigger Blood Pressure Measurement", systemImage: "drop.fill") {
-                                measurements.loadMockBloodPressureMeasurement()
-                            }
-                            Button("Show Measurements", systemImage: "heart.text.square") {
-                                measurements.shouldPresentMeasurements = true
-                            }
-                        }
-                    }
+                    mockMeasurementActions
                 }
 #endif
         }
     }
+
+#if DEBUG
+    // Labelled verbatim: these drive the mock devices during development and are never shown to a participant.
+    @ToolbarContentBuilder private var mockMeasurementActions: some ToolbarContent {
+        if FeatureFlags.testMockDevices {
+            ToolbarItemGroup(placement: .secondaryAction) {
+                Button(action: { measurements.loadMockWeightMeasurement() }) {
+                    Label { Text(verbatim: "Trigger Weight Measurement") } icon: { Image(systemName: "scalemass.fill") }
+                }
+                Button(action: { measurements.loadMockBloodPressureMeasurement() }) {
+                    Label { Text(verbatim: "Trigger Blood Pressure Measurement") } icon: { Image(systemName: "drop.fill") }
+                }
+                Button(action: { measurements.shouldPresentMeasurements = true }) {
+                    Label { Text(verbatim: "Show Measurements") } icon: { Image(systemName: "heart.text.square") }
+                }
+            }
+        }
+    }
+#endif
 }
 
 

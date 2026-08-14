@@ -19,9 +19,9 @@ enum DateGranularity: CustomStringConvertible, CaseIterable, Identifiable {
     
     var description: String {
         switch self {
-        case .daily: "Daily"
-        case .weekly: "Weekly"
-        case .monthly: "Monthly"
+        case .daily: String(localized: "Daily", comment: "Date granularity picker label")
+        case .weekly: String(localized: "Weekly", comment: "Date granularity picker label")
+        case .monthly: String(localized: "Monthly", comment: "Date granularity picker label")
         }
     }
     

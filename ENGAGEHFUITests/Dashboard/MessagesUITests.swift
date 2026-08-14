@@ -95,33 +95,32 @@ final class MessagesUITests: XCTestCase {
         
         // Directly dismiss by tapping dismiss button
         let medicationChangeMessage = app.otherElements["Message Card - Medication Change"]
-        XCTAssert(medicationChangeMessage.exists)
-        
+        medicationChangeMessage.assertExists()
+
         medicationChangeMessage.buttons["Dismiss Button"].tap()
-        try? await Task.sleep(for: .seconds(1))
-        XCTAssertFalse(app.otherElements["Message Card - Medication Change"].exists, "Tapped dismiss but message is still present.")
+        medicationChangeMessage.assertDisappears("Tapped dismiss but message is still present.")
         
         
         // Indirectly dismiss by completing action
         let uptitrationMessage = app.otherElements["Message Card - Medication Uptitration"]
-        XCTAssert(uptitrationMessage.exists)
+        uptitrationMessage.assertExists()
         XCTAssert(uptitrationMessage.isHittable)
-        
+
         uptitrationMessage.tap()
-        try? await Task.sleep(for: .seconds(1))
+        app.staticTexts["Medications"].assertExists()
         app.goTo(tab: "Home")
-        XCTAssertFalse(app.otherElements["Message Card - Medication Uptitration"].exists)
+        uptitrationMessage.assertDisappears()
         
         
         // Make sure the non-dismissible message is not dismissed on tap
         let vitalsMessage = app.otherElements["Message Card - Vitals"]
-        XCTAssert(vitalsMessage.exists)
+        vitalsMessage.assertExists()
         XCTAssert(vitalsMessage.isHittable)
-        
+
         vitalsMessage.tap()
-        try? await Task.sleep(for: .seconds(1))
+        app.staticTexts["Heart Health"].assertExists()
         app.goTo(tab: "Home")
-        XCTAssert(app.otherElements["Message Card - Vitals"].waitForExistence(timeout: 1))
+        vitalsMessage.assertExists()
     }
     
     func testPlayVideoAction() async throws {
@@ -271,7 +270,7 @@ final class MessagesUITests: XCTestCase {
     ) throws {
         let expectedCardLabel = """
         Message: \(expectedTitle), \
-        description: \(expectedDescription ?? "none"), \
+        description: \(expectedDescription ?? "No description"), \
         action: \(expectedAction).
         """
         XCTAssertEqual(expectedCardLabel, card.label)

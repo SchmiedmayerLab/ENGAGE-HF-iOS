@@ -51,22 +51,28 @@ final class InvitationCodeModule: Module, EnvironmentAccessible, @unchecked Send
                     logger.debug("About to enroll user")
                     let enrollUser = Functions.functions().httpsCallable("enrollUser")
                     _ = try await enrollUser.call(["invitationCode": invitationCode])
-                    _ = try? await Auth.auth().currentUser?.getIDToken(forcingRefresh: true)
-                    
-                    // Now that we've forced refresh on the auth token, refresh the content of the managers.
-                    videoManager.refreshContent()
-                    await userMetaDataManager.refreshContent()
-                    await medicationsManager.refreshContent()
-                    notificationManager.refreshContent()
-                    await messageManager.refreshContent()
-                    navigationManager.refreshContent()
-                    await vitalsManager.refreshContent()
-                    
-                    logger.debug("Successfully enrolled user!")
+                } catch let error as NSError where FunctionsErrorCode(rawValue: error.code) == .alreadyExists {
+                    // An earlier launch already enrolled this account; only the local state is missing.
+                    logger.debug("User is already enrolled in the study.")
                 } catch {
                     logger.error("Failed to enroll user: \(error)")
                     throw InvitationCodeError.invitationCodeInvalid
                 }
+                _ = try? await Auth.auth().currentUser?.getIDToken(forcingRefresh: true)
+
+                // Now that we've forced refresh on the auth token, refresh the content of the managers.
+                await refreshManagers()
+
+                // Returning success while the code is still absent would let the invitation flow
+                // advance and then bounce the account back to the setup sheet.
+                guard await waitForInvitationCode() else {
+                    logger.error("The invitation code did not reach the local account details in time.")
+                    throw InvitationCodeError.generalError(
+                        String(localized: "The enrollment has not finished syncing yet. Please try again.")
+                    )
+                }
+
+                logger.debug("Successfully enrolled user!")
             }
         } catch let error as NSError {
             if let errorCode = FunctionsErrorCode(rawValue: error.code) {
@@ -86,6 +92,40 @@ final class InvitationCodeModule: Module, EnvironmentAccessible, @unchecked Send
         }
     }
 
+    /// Waits until the invitation code reaches the local account details through the Firestore listener.
+    ///
+    /// Enrollment happens server-side, but the account sheet only dismisses once the code arrives in
+    /// ``AccountDetails``; treating enrollment as complete before that leaves a window in which the app
+    /// still shows the invitation prompt and a relaunch strands the account signed in but unenrolled.
+    @discardableResult
+    private func waitForInvitationCode(timeout: Duration = .seconds(10)) async -> Bool {
+        guard let account else {
+            return false
+        }
+        let deadline = ContinuousClock.now.advanced(by: timeout)
+        while ContinuousClock.now < deadline {
+            if await account.details?.invitationCode != nil {
+                return true
+            }
+            do {
+                try await Task.sleep(for: .milliseconds(100))
+            } catch {
+                break
+            }
+        }
+        return await account.details?.invitationCode != nil
+    }
+
+    private func refreshManagers() async {
+        videoManager.refreshContent()
+        await userMetaDataManager.refreshContent()
+        await medicationsManager.refreshContent()
+        notificationManager.refreshContent()
+        await messageManager.refreshContent()
+        navigationManager.refreshContent()
+        await vitalsManager.refreshContent()
+    }
+
     func setupTestEnvironment(invitationCode: String) async throws {
         guard let account, let accountService else {
             guard FeatureFlags.disableFirebase else {
@@ -103,14 +143,28 @@ final class InvitationCodeModule: Module, EnvironmentAccessible, @unchecked Send
             try await Task.sleep(for: .seconds(1))
         }
 
+        var loggedIn = false
         do {
             try await accountService.login(userId: email, password: password)
-            return // account was already established previously
+            loggedIn = true
         } catch FirebaseAccountError.invalidCredentials {
             // probably doesn't exist. We try to create a new one below
         } catch {
             logger.error("Failed logging into test account: \(error)")
             throw error
+        }
+
+        if loggedIn {
+            // A previous run can create this account and terminate before enrollment completes, so a
+            // successful login does not imply the account carries an invitation code.
+            if !(await waitForInvitationCode(timeout: .seconds(5))) {
+                try await verifyOnboardingCode(invitationCode)
+            } else {
+                // The managers attach their listeners from account events, which a relaunch's quick
+                // logout and login can outpace; refreshing mirrors what enrollment does explicitly.
+                await refreshManagers()
+            }
+            return
         }
         
         do {

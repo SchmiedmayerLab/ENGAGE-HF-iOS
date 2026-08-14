@@ -274,7 +274,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 2600;
+				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					653A254C283387FE005D4D48 = {
 						CreatedOnToolsVersion = 13.4;
@@ -406,6 +406,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -478,6 +479,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -549,28 +551,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CQRZ4E7K9U;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "ENGAGEHF/Supporting Files/Info.plist";
-				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Application must access bluetooth to connect to data collecting devices and retrieve data from weight scale and blood pressure cuff.";
-				INFOPLIST_KEY_NSCameraUsageDescription = "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "The ENGAGE-HF app uses the step count to demonstrate Spezi's integration with HealthKit.";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "The ENGAGE-HF app uses the step count to demonstrate Spezi's integration with HealthKit.";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This message should never appear. Please adjust this when you start using location information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This message should never appear. Please adjust this when you start using location information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This message should never appear. Please adjust this when you start using microphone information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
-				INFOPLIST_KEY_NSMotionUsageDescription = "This message should never appear. Please adjust this when you start using motion information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This message should never appear. Please adjust this when you start using speecg information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.bdh.engagehf;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.hrtex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -596,19 +585,6 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = CQRZ4E7K9U;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "ENGAGEHF/Supporting Files/Info.plist";
-				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Application must access bluetooth to connect to data collecting devices and retrieve data from weight scale and blood pressure cuff.";
-				INFOPLIST_KEY_NSCameraUsageDescription = "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "The ENGAGE-HF app uses the step count to demonstrate Spezi's integration with HealthKit.";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "The ENGAGE-HF app uses the step count to demonstrate Spezi's integration with HealthKit.";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This message should never appear. Please adjust this when you start using location information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This message should never appear. Please adjust this when you start using location information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This message should never appear. Please adjust this when you start using microphone information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
-				INFOPLIST_KEY_NSMotionUsageDescription = "This message should never appear. Please adjust this when you start using motion information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This message should never appear. Please adjust this when you start using speecg information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

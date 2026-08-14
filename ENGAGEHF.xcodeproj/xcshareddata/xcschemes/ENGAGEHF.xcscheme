@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "2600"
+   LastUpgradeVersion = "2630"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -31,6 +31,12 @@
          <TestPlanReference
             reference = "container:ENGAGEHF.xctestplan"
             default = "YES">
+         </TestPlanReference>
+         <TestPlanReference
+            reference = "container:ENGAGEHF UI Tests.xctestplan">
+         </TestPlanReference>
+         <TestPlanReference
+            reference = "container:ENGAGEHF Unit Tests.xctestplan">
          </TestPlanReference>
       </TestPlans>
       <Testables>

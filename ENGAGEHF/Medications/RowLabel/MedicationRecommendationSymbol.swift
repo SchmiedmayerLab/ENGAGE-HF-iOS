@@ -31,7 +31,14 @@ struct MedicationRecommendationSymbol: View {
             .resizable()
             .frame(width: 35, height: 35)
             .foregroundStyle(type.style.color)
-            .accessibilityLabel("Medication Label: \(type.rawValue)")
+            .accessibilityLabel(
+                String(
+                    localized: "Medication Label: \(type.localizedDescription)",
+                    comment: "Accessibility label for medication recommendation symbol"
+                )
+            )
+            // The label reads as prose and changes with the language, so the tests match on this instead.
+            .accessibilityIdentifier("Medication Label: \(type.rawValue)")
     }
 }
 

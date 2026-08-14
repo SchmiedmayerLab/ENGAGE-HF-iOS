@@ -29,8 +29,8 @@ struct Medications: View {
                 .toolbar {
                     if FeatureFlags.setupTestMedications {
                         ToolbarItem(placement: .secondaryAction) {
-                            Button("Add Medications", systemImage: "heart.text.square") {
-                                medicationsManager.injectTestMedications()
+                            Button(action: { medicationsManager.injectTestMedications() }) {
+                                Label { Text(verbatim: "Add Medications") } icon: { Image(systemName: "heart.text.square") }
                             }
                         }
                     }

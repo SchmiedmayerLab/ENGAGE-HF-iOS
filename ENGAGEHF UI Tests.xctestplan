@@ -1,0 +1,39 @@
+{
+  "configurations" : [
+    {
+      "id" : "A6C22E8E-E690-49D7-8B56-AB9DB3CB94BD",
+      "name" : "Default",
+      "options" : {}
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:ENGAGEHF.xcodeproj",
+          "identifier" : "653A254C283387FE005D4D48",
+          "name" : "ENGAGEHF"
+        }
+      ]
+    },
+    "language" : "en",
+    "maximumTestRepetitions" : 2,
+    "repeatInNewRunnerProcess" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:ENGAGEHF.xcodeproj",
+      "identifier" : "653A254C283387FE005D4D48",
+      "name" : "ENGAGEHF"
+    },
+    "testRepetitionMode" : "retryOnFailure"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ENGAGEHF.xcodeproj",
+        "identifier" : "653A256628338800005D4D48",
+        "name" : "ENGAGEHFUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

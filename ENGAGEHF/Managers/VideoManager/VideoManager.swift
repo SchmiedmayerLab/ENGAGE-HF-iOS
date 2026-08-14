@@ -58,6 +58,12 @@ final class VideoManager: Manager, @unchecked Sendable {
     
     
     func refreshContent() {
+#if DEBUG
+        // Test videos are injected locally; fetching would replace them with server state.
+        if ProcessInfo.processInfo.isPreviewSimulator || FeatureFlags.setupTestVideos {
+            return
+        }
+#endif
         Task {
             videoCollections = await getVideoSections()
         }

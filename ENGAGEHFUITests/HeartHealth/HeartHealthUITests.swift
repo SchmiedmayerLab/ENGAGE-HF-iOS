@@ -81,11 +81,10 @@ final class HeartHealthUITests: XCTestCase {
         )
         
         // Test to make sure the All Data section has an item in it
-        app.staticTexts["About Body Weight"].swipeUp()
-        XCTAssertFalse(app.staticTexts["Empty Weight List"].waitForExistence(timeout: 0.5))
-        XCTAssert(app.staticTexts["Weight Quantity: \(expectedWeight)"].exists)
-        XCTAssert(app.staticTexts["Weight Unit: \(expectedUnit)"].exists)
-        XCTAssert(app.staticTexts["Weight Date: Jun 5, 2024"].exists)
+        app.scrollToElement(app.staticTexts["Weight Quantity: \(expectedWeight)"])
+        app.staticTexts["Empty Weight List"].assertDisappears()
+        app.staticTexts["Weight Unit: \(expectedUnit)"].assertExists()
+        app.staticTexts["Weight Date: Jun 5, 2024"].assertExists()
         
         // Make sure the empty views return when we delete the data
         app.deleteAllMeasurements("Weight", header: "Body Weight")
@@ -110,11 +109,10 @@ final class HeartHealthUITests: XCTestCase {
         )
         
         // Test to make sure the All Data section has an item in it
-        app.staticTexts["About Heart Rate"].swipeUp()
-        XCTAssertFalse(app.staticTexts["Empty HR List"].waitForExistence(timeout: 0.5))
-        XCTAssert(app.staticTexts["HR Quantity: 62"].exists)
-        XCTAssert(app.staticTexts["HR Unit: BPM"].exists)
-        XCTAssert(app.staticTexts["HR Date: Jun 5, 2024"].exists)
+        app.scrollToElement(app.staticTexts["HR Quantity: 62"])
+        app.staticTexts["Empty HR List"].assertDisappears()
+        app.staticTexts["HR Unit: BPM"].assertExists()
+        app.staticTexts["HR Date: Jun 5, 2024"].assertExists()
         
         // Make sure the empty views return when we delete the data
         app.deleteAllMeasurements("HR", header: "Heart Rate")
@@ -139,11 +137,10 @@ final class HeartHealthUITests: XCTestCase {
         )
         
         // Test to make sure the All Data section has an item in it
-        app.staticTexts["About Blood Pressure"].swipeUp()
-        XCTAssertFalse(app.staticTexts["Empty BP List"].waitForExistence(timeout: 0.5))
-        XCTAssert(app.staticTexts["BP Quantity: 103/64"].exists)
-        XCTAssert(app.staticTexts["BP Unit: mmHg"].exists)
-        XCTAssert(app.staticTexts["BP Date: Jun 5, 2024"].exists)
+        app.scrollToElement(app.staticTexts["BP Quantity: 103/64"])
+        app.staticTexts["Empty BP List"].assertDisappears()
+        app.staticTexts["BP Unit: mmHg"].assertExists()
+        app.staticTexts["BP Date: Jun 5, 2024"].assertExists()
         
         // Make sure the empty views return when we delete the data
         app.deleteAllMeasurements("BP", header: "Blood Pressure")
@@ -212,21 +209,16 @@ extension XCUIApplication {
         // Make sure the vitals are correctly displayed
         goToHeartHealth(segment: id.short, header: id.full)
         
-        staticTexts["About \(id.full)"].swipeUp()
-        swipeUp()
-        
         // Make sure the measurement is displayed in "All Data" section
-        XCTAssert(staticTexts["\(id.short) Quantity: \(expectedQuantity.value)"].waitForExistence(timeout: 5))
-        XCTAssert(staticTexts["\(id.short) Unit: \(expectedQuantity.unit)"].waitForExistence(timeout: 5))
-        XCTAssert(staticTexts["\(id.short) Date: Jun 5, 2024"].waitForExistence(timeout: 5))
-        
-        swipeDown()
-        swipeDown()
-        
+        scrollToElement(staticTexts["\(id.short) Quantity: \(expectedQuantity.value)"])
+        staticTexts["\(id.short) Unit: \(expectedQuantity.unit)"].assertExists()
+        staticTexts["\(id.short) Date: Jun 5, 2024"].assertExists()
+
         // Navigate to weekly data
-        XCTAssert(buttons["Resolution Picker, \(pickerID)"].waitForExistence(timeout: 0.5))
-        buttons["Resolution Picker, \(pickerID)"].tap()
-        XCTAssert(buttons[dateInfo.granularity].waitForExistence(timeout: 0.5))
+        let resolutionPicker = buttons["Resolution Picker, \(pickerID)"]
+        scrollToElement(resolutionPicker, .swipingDown)
+        resolutionPicker.tap()
+        buttons[dateInfo.granularity].assertExists()
         buttons[dateInfo.granularity].tap()
         try? await Task.sleep(for: .seconds(1))
         
@@ -299,7 +291,7 @@ extension XCUIApplication {
             "Physical",
             "Social",
             "Quality of Life",
-            "Symptoms",
+            "Specific Symptoms",
             "Dizziness"
         ]
         
@@ -320,11 +312,11 @@ extension XCUIApplication {
     }
     
     private func testEmptyForSpecificType(scoreType: String) {
-        XCTAssert(staticTexts["Overall Summary Quantity: No Data"].waitForExistence(timeout: 0.5))
-        XCTAssert(staticTexts["\(scoreType) Score Description"].waitForExistence(timeout: 0.5))
-        XCTAssert(staticTexts["About \(scoreType) Score"].waitForExistence(timeout: 0.5))
+        staticTexts["Overall Summary Quantity: No Data"].assertExists()
+        staticTexts["\(scoreType) Score Description"].assertExists()
+        staticTexts["About \(scoreType) Score"].assertExists()
         staticTexts["About \(scoreType) Score"].swipeUp()
-        XCTAssert(staticTexts["Empty Symptoms List"].waitForExistence(timeout: 0.5))
+        staticTexts["Empty Symptoms List"].assertExists()
         swipeDown()
     }
 }

@@ -1,0 +1,41 @@
+{
+  "shards": [
+    {
+      "name": "Heart Health",
+      "shard": "01",
+      "tests": [
+        "ENGAGEHFUITests/HeartHealthUITests"
+      ]
+    },
+    {
+      "name": "Medications",
+      "shard": "02",
+      "tests": [
+        "ENGAGEHFUITests/MedicationsUITests"
+      ]
+    },
+    {
+      "name": "Dashboard and Measurements",
+      "shard": "03",
+      "tests": [
+        "ENGAGEHFUITests/MessagesUITests",
+        "ENGAGEHFUITests/AddMeasurementUITests",
+        "ENGAGEHFUITests/RecentVitalsUITests",
+        "ENGAGEHFUITests/HomeViewUITests"
+      ]
+    },
+    {
+      "name": "Account, Education and Launch",
+      "shard": "04",
+      "tests": [
+        "ENGAGEHFUITests/OnboardingUITests",
+        "ENGAGEHFUITests/AccountTests",
+        "ENGAGEHFUITests/HealthSummaryUITests",
+        "ENGAGEHFUITests/ContactsUITests",
+        "ENGAGEHFUITests/NotificationSettingsUITests",
+        "ENGAGEHFUITests/EducationViewUITests",
+        "ENGAGEHFUITests/LaunchTests"
+      ]
+    }
+  ]
+}

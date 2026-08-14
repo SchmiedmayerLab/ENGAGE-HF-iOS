@@ -76,10 +76,10 @@ final class RecentVitalsUITests: XCTestCase {
         XCTAssertFalse(app.alerts.element.exists)
         
         // Weight measurement has been successfully saved, and should be represented in the dashboard
-        XCTAssert(app.staticTexts["Recent Vitals"].waitForExistence(timeout: 0.5))
-        XCTAssert(app.staticTexts["Weight Quantity: \(expectedWeight)"].exists)
-        XCTAssert(app.staticTexts["Weight Unit: \(weightUnit)"].exists)
-        XCTAssert(app.staticTexts["Weight Date: \(expectedFormattedMeasurementDate)"].exists)
+        app.staticTexts["Recent Vitals"].assertExists()
+        app.staticTexts["Weight Quantity: \(expectedWeight)"].assertExists()
+        app.staticTexts["Weight Unit: \(weightUnit)"].assertExists()
+        app.staticTexts["Weight Date: \(expectedFormattedMeasurementDate)"].assertExists()
         
         app.staticTexts["Weight Quantity: \(expectedWeight)"].tap()
         XCTAssert(app.staticTexts["Body Weight"].waitForExistence(timeout: 2.0))

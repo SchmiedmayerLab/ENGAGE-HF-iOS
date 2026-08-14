@@ -73,6 +73,10 @@ final class MedicationsManager: Manager, @unchecked Sendable {
     
     /// Call on sign-in. Registers a snapshot listener to the current user's medicationRecommendations collection and decodes the medications found there.
     private func updateSnapshotListener(for details: AccountDetails?) {
+        // Test medications are injected locally; a live listener would replace them with server state.
+        guard !FeatureFlags.setupTestMedications else {
+            return
+        }
         logger.info("Initializing medications snapshot listener...")
         
         self.snapshotListener?.remove()

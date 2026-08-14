@@ -68,6 +68,7 @@ struct RecentVitalsSection: View {
                     HStack {
                         VitalsCard(
                             type: "Weight",
+                            emptyStateDescription: "No recent weight measurement available",
                             units: massUnits.unitString,
                             measurement: weightMeasurement
                         )
@@ -77,6 +78,7 @@ struct RecentVitalsSection: View {
                         }
                         VitalsCard(
                             type: "Heart Rate",
+                            emptyStateDescription: "No recent heart rate measurement available",
                             units: "BPM",
                             measurement: heartRateMeasurement
                         )
@@ -87,6 +89,7 @@ struct RecentVitalsSection: View {
                     }
                     VitalsCard(
                         type: "Blood Pressure",
+                        emptyStateDescription: "No recent blood pressure measurement available",
                         units: "mmHg",
                         measurement: bloodPressureMeasurement
                     )
