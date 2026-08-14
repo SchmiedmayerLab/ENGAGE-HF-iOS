@@ -1,5 +1,5 @@
 //
-// This source file is part of the ENGAGE-HF project based on the Stanford Spezi Template Application project
+// This source file is part of the ENGAGE-HF iOS open-source project
 //
 // SPDX-FileCopyrightText: 2024 Stanford University
 //
