@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseFunctions
 import FirebaseStorage
 import HealthKit
-import HealthKitOnFHIR
+import struct ModelsR4.QuestionnaireResponse
 import OSLog
 import PDFKit
 import PhoneNumberKit
@@ -20,6 +20,7 @@ import SpeziAccountPhoneNumbers
 import SpeziDevices
 import SpeziFirebaseAccount
 import SpeziFirestore
+import SpeziHealthKitFHIR
 import SpeziQuestionnaire
 import SwiftUI
 

@@ -10,6 +10,7 @@ import FHIRQuestionnaires
 import FirebaseFirestore
 import Spezi
 import SpeziQuestionnaire
+import SpeziQuestionnaireLegacy
 import SpeziViews
 import SwiftUI
 
