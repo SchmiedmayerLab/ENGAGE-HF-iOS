@@ -4,7 +4,7 @@
 //
 // SPDX-License-Identifier: MIT
 //
-// Based on: https://github.com/StanfordBDHG/PediatricAppleWatchStudy/pull/54/
+// Based on the Stanford Pediatric Apple Watch Study
 //
 
 import XCTest
